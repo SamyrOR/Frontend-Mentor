@@ -1,0 +1,76 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: hsl(185, 75%, 39%);
+}
+
+body::before {
+  content: "";
+  background-image: url(/images/bg-pattern-top.svg);
+  background-repeat: no-repeat;
+  width: 51vw;
+  height: 100vh;
+  position: absolute;
+  top: -50vh;
+  left: 0vw;
+  z-index: -1;
+}
+
+body::after {
+  content: "";
+  background-image: url(/images/bg-pattern-bottom.svg);
+  background-repeat: no-repeat;
+  width: 50vw;
+  height: 50vh;
+  position: absolute;
+  bottom: 0vh;
+  right: 0vw;
+  z-index: -1;
+}
+
+.card {
+  position: absolute;
+  top: 30%;
+  left: 40%;
+  width: 21.8rem;
+  height: 23.4rem;
+  background-color: #fff;
+  border-radius: 4%;
+  &__top {
+    background-image: url(/images/bg-pattern-card.svg);
+    width: 100%;
+    height: 40%;
+    border-top-left-radius: 4% 8%;
+    border-top-right-radius: 4% 8%;
+  }
+  &__img {
+    position: absolute;
+    top: 25%;
+    left: 35%;
+    border-radius: 50%;
+    border: 0.5rem solid #fff;
+    img {
+      width: 100%;
+      border-radius: 50%;
+    }
+  }
+  .main-text {
+    margin-top: 20%;
+    text-align: center;
+  }
+}
+
+// .img-bg {
+//   &__1 {
+//     position: absolute;
+//     top: -50vh;
+//   }
+//   &__2 {
+//     position: absolute;
+//     bottom: -50vh;
+//   }
+// }
