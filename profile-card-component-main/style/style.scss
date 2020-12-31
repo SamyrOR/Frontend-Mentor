@@ -120,6 +120,9 @@ body::after {
 
 @media (max-width: 1440px) {
   body::before {
+    height: 1100px;
+    top: -50%;
+
     left: -20%;
   }
 }
