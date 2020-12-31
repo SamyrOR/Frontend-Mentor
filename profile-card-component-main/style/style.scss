@@ -12,7 +12,7 @@ body::before {
   content: "";
   background-image: url(/images/bg-pattern-top.svg);
   background-repeat: no-repeat;
-  width: 51vw;
+  width: 100vw;
   height: 100vh;
   position: absolute;
   top: -50vh;
@@ -40,6 +40,8 @@ body::after {
   height: 23.4rem;
   background-color: #fff;
   border-radius: 4%;
+  color: hsl(229, 23%, 23%);
+  font-family: Kumbh Sans;
   &__top {
     background-image: url(/images/bg-pattern-card.svg);
     width: 100%;
@@ -58,19 +60,86 @@ body::after {
       border-radius: 50%;
     }
   }
-  .main-text {
-    margin-top: 20%;
-    text-align: center;
+
+  &__bottom {
+    border-top: 1px solid #e7e7e7;
+    height: 5.6rem;
   }
 }
 
-// .img-bg {
-//   &__1 {
-//     position: absolute;
-//     top: -50vh;
-//   }
-//   &__2 {
-//     position: absolute;
-//     bottom: -50vh;
-//   }
-// }
+.main-text {
+  margin-top: 20%;
+  text-align: center;
+}
+.text {
+  &__title {
+    margin-bottom: 0;
+    font-size: 20px;
+  }
+  &__highlight {
+    font-weight: bold;
+  }
+
+  &__sub {
+    color: hsl(227, 10%, 46%);
+    margin-top: 15px;
+  }
+}
+
+.container {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  height: 100%;
+  align-items: center;
+}
+
+.info {
+  .text {
+    &__highlight {
+      font-size: 20px;
+      margin-bottom: 5px;
+    }
+    &__sub {
+      font-size: 12px;
+      letter-spacing: 2px;
+      margin-top: 0;
+    }
+  }
+}
+.attribution {
+  font-size: 11px;
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+  left: 43%;
+  a {
+    color: hsl(228, 45%, 44%);
+  }
+}
+
+@media (max-width: 1440px) {
+  body::before {
+    left: -20%;
+  }
+}
+
+@media (max-width: 425px) {
+  body::before {
+    height: 700px;
+    width: 700px;
+    top: -300px;
+    left: -500px;
+    background-size: cover;
+  }
+  body::after {
+    height: 60vh;
+  }
+  .card {
+    left: 20px;
+    width: 90vw;
+  }
+  .attribution {
+    left: 20%;
+  }
+} ;
