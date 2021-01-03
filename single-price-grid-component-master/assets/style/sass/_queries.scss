@@ -1,0 +1,31 @@
+@include mquerie($laptops) {
+  section {
+    padding: 4.7rem 4rem;
+  }
+  .button:hover {
+    box-shadow: 0px 2px 5px rgba($color: #000000, $alpha: 0.5);
+    cursor: pointer;
+  }
+  .main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .join {
+    grid-column: 1/3;
+    &__subtitle {
+      margin-bottom: 1rem;
+    }
+  }
+  .subscription {
+    border-bottom-left-radius: 0.5rem;
+    &__text {
+      font-size: 1.5rem;
+    }
+  }
+  .us {
+    border-bottom-left-radius: 0;
+    &__text {
+      line-height: 2.2rem;
+    }
+  }
+}

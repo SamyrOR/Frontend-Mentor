@@ -1,0 +1,60 @@
+.container {
+  margin: 7.2rem auto;
+  width: 80vw;
+  max-width: 62.6rem;
+}
+
+.main {
+  box-shadow: 0 0 10px rgba($color: #000000, $alpha: 0.2);
+  border-radius: 0.5rem;
+}
+.join {
+  background-color: #fff;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  &__title {
+    color: $color-primary;
+    margin-bottom: 2.9rem;
+  }
+  &__subtitle {
+    color: $color-secondary;
+    margin-bottom: 2.6rem;
+  }
+  &__text {
+    color: $color-secondary-neutral;
+  }
+}
+
+.subscription {
+  background-color: $color-primary;
+  color: #fff;
+  &__title {
+    margin-bottom: 2.5rem;
+  }
+  .flex {
+    display: flex;
+    margin-bottom: 1rem;
+  }
+  &__price {
+    font-size: 3.5rem;
+  }
+  span {
+    margin-left: 1.4rem;
+    color: $color-primary-neutral;
+  }
+  &__text {
+    margin-bottom: 2.5rem;
+  }
+}
+
+.us {
+  background-color: $color-bg-us;
+  color: #fff;
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  line-height: 2.3rem;
+
+  &__title {
+    margin-bottom: 2.4rem;
+  }
+}

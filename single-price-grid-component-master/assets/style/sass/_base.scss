@@ -1,0 +1,41 @@
+@import url("https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap");
+$color-primary: hsl(179, 62%, 43%);
+$color-secondary: hsl(71, 73%, 54%);
+$color-primary-neutral: hsl(204, 43%, 93%);
+$color-secondary-neutral: hsl(218, 22%, 67%);
+$color-bg-us: #4abebd;
+$main-font: Karla, sans-serif;
+$small-tablets: 620px;
+$laptops: 960px;
+$desktops: 1200px;
+@mixin mquerie($breaking-point) {
+  @media screen and (min-width: $breaking-point) {
+    @content;
+  }
+}
+body {
+  font-family: $main-font;
+  font-size: 1.6rem;
+  background-color: $color-primary-neutral;
+}
+section {
+  padding: 3.6rem 2.4rem;
+  line-height: 2.9rem;
+}
+h1 {
+  font-size: 2rem;
+}
+h2 {
+  font-size: 1.8rem;
+}
+
+.button {
+  height: 4.8rem;
+  width: 100%;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: $color-secondary;
+  color: #fff;
+  font-size: 1.6rem;
+  font-weight: bold;
+}
