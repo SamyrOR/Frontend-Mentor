@@ -1,0 +1,36 @@
+.accordion {
+  &__item {
+    border-bottom: 1px solid $color-divider;
+    // &:hover {
+    //   color: $color-text-secondary;
+    // }
+  }
+  &__input {
+    display: none;
+    &:checked ~ .accordion__content {
+      height: 5rem;
+    }
+    &:checked ~ .accordion__label {
+      font-weight: bold;
+    }
+    &:checked ~ .accordion__label .accordion__icon img {
+      transform: rotate (100deg);
+    }
+  }
+
+  &__icon {
+    img {
+      transition: all 0.3s linear;
+    }
+  }
+  &__label {
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem 0;
+  }
+  &__content {
+    height: 0;
+    overflow: hidden;
+    transition: all 0.3s linear;
+  }
+}
