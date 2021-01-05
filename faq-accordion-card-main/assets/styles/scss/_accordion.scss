@@ -1,9 +1,6 @@
 .accordion {
   &__item {
     border-bottom: 1px solid $color-divider;
-    // &:hover {
-    //   color: $color-text-secondary;
-    // }
   }
   &__input {
     display: none;
@@ -14,7 +11,7 @@
       font-weight: bold;
     }
     &:checked ~ .accordion__label .accordion__icon img {
-      transform: rotate (100deg);
+      transform: rotateX(180deg);
     }
   }
 

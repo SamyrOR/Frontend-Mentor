@@ -1,0 +1,36 @@
+@media screen and (min-width: $bp-medium) {
+  .main {
+    display: flex;
+    position: relative;
+    max-width: 92rem;
+    height: 50.9rem;
+    align-items: flex-end;
+    flex-direction: column;
+    padding: 0 9rem;
+    background-image: url($woman-desktop), url($bg-shadow-desktop);
+    background-repeat: no-repeat, no-repeat;
+    background-position: left -8rem bottom 10rem, right 52rem top -30rem;
+    &__title {
+      display: inline-block;
+      width: 47%;
+      text-align: left;
+      padding: 7.1rem 0 4.5rem 0;
+    }
+    &::before {
+      content: "";
+      position: absolute;
+      top: 32%;
+      left: -11rem;
+      background-image: url($box-desktop);
+      animation: flying-box 3s infinite;
+    }
+  }
+  .accordion {
+    width: 34.9rem;
+    &__label {
+      &:hover {
+        color: $color-text-secondary;
+      }
+    }
+  }
+} ;

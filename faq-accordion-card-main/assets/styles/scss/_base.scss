@@ -6,43 +6,48 @@ $color-bg-primary: hsl(273, 75%, 66%);
 $color-bg-secondary: hsl(240, 73%, 65%);
 $color-divider: hsl(240, 5%, 91%);
 $main-font: "Kumbh Sans", sans-serif;
+$bp-small: 620px;
+$bp-medium: 980px;
+$bp-large: 1200px;
 
 body {
   font-size: 1.2rem;
   font-family: $main-font;
+}
+.bg {
+  height: 100%;
   background: linear-gradient(
     to bottom,
     $color-bg-primary,
     $color-bg-secondary
   );
-  background-size: cover;
-  background-repeat: no-repeat;
-  min-height: 100vh;
 }
 
 .main {
-  margin: 14.8rem auto;
+  margin: 14.8rem auto 20% auto;
   height: 53.5rem;
-  width: 32.7rem;
-  max-width: 92rem;
+  max-width: 32.7rem;
   background-color: #fff;
   padding: 0 2.4rem;
   border-radius: 2rem;
+  box-shadow: 0 20px 20px rgba($color: #000000, $alpha: 0.5);
   &::before {
     content: "";
     display: block;
     position: absolute;
     width: 26rem;
     height: 21.5rem;
-    top: 4.7rem;
-    background-image: url($woman-bg-shadow), url($woman-bg);
+    top: 4rem;
+    background-image: url($bg-shadow-mobile), url($woman-bg-mobile);
     background-repeat: no-repeat no-repeat;
-    background-position: bottom 1rem left 1.8rem, top -0.6rem left -1rem;
+    background-position: bottom 0.5rem left 1.8rem, top 0rem left -1rem;
   }
-
   &__title {
     display: block;
     padding-top: 13.8rem;
     text-align: center;
+  }
+  &__img {
+    display: none;
   }
 }
