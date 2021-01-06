@@ -1,6 +1,9 @@
 .accordion {
   &__item {
     border-bottom: 1px solid $color-divider;
+    &:first-child .accordion__label {
+      padding-top: 0rem;
+    }
   }
   &__input {
     display: none;
@@ -9,6 +12,7 @@
     }
     &:checked ~ .accordion__label {
       font-weight: bold;
+      color: $color-text-primary;
     }
     &:checked ~ .accordion__label .accordion__icon img {
       transform: rotateX(180deg);
@@ -24,9 +28,12 @@
     display: flex;
     justify-content: space-between;
     padding: 2rem 0;
+    color: $color-text-darker;
+    cursor: pointer;
   }
   &__content {
     height: 0;
+    color: $color-text-dark;
     overflow: hidden;
     transition: all 0.3s linear;
   }

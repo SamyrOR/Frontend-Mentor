@@ -1,5 +1,6 @@
 @media screen and (min-width: $bp-medium) {
   .main {
+    margin-top: 12.9rem;
     display: flex;
     position: relative;
     max-width: 92rem;
@@ -15,6 +16,7 @@
       width: 47%;
       text-align: left;
       padding: 7.1rem 0 4.5rem 0;
+      font-size: 3 rem;
     }
     &::before {
       content: "";
