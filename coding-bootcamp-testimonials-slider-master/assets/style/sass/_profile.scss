@@ -1,0 +1,57 @@
+.profile {
+  &__pic {
+    display: block;
+    padding: 3rem 0;
+    margin: 2.4rem 0 3rem 0;
+    background-image: url($bg-pic);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
+  &__img {
+    display: block;
+    position: relative;
+    margin: 0 auto;
+
+    width: 75%;
+    img {
+      border-radius: 0.5rem;
+    }
+  }
+}
+.slider {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20%;
+  height: 10%;
+  left: 40%;
+  bottom: -0.5rem;
+  max-width: 8rem;
+
+  &__prev {
+    border-radius: 50% 0 0 50%;
+    img {
+      width: 30%;
+      max-width: 3rem;
+    }
+  }
+  &__next {
+    border-radius: 0 50% 50% 0;
+    img {
+      width: 32%;
+      max-width: 3rem;
+    }
+  }
+}
+.testimony {
+  text-align: center;
+  font-size: 1.7rem;
+  &__text {
+    padding: 3rem 0;
+    background-image: url($quotes);
+    background-repeat: no-repeat;
+    background-size: 7rem;
+    background-position: 50% 0;
+  }
+}

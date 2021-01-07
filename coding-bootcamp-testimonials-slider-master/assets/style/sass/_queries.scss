@@ -1,0 +1,35 @@
+@media screen and (min-width: $bp-medium) {
+  body {
+  }
+  .main {
+    max-width: 120rem;
+  }
+  .profile {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    &__pic {
+      width: 69.9rem;
+    }
+  }
+  .testimony {
+    font-size: 3.2rem;
+    text-align: left;
+    width: 63.6rem;
+    &__text {
+      background-position: left 20% top 0;
+      background-size: 30%;
+      padding-top: 8rem;
+    }
+    &__title,
+    &__subtitle {
+      display: inline-block;
+    }
+  }
+  .slider {
+    left: 10%;
+  }
+  .bg {
+    background-size: 50%;
+  }
+}
