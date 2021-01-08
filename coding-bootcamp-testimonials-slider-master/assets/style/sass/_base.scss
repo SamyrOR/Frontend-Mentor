@@ -36,7 +36,12 @@ h2 {
   width: 50%;
   height: 100%;
   border: 1px solid #cacaca;
+  outline: none;
   cursor: pointer;
+  transition: all 0.3 ease-in;
+  &:hover {
+    transform: scale(0.9);
+  }
 }
 .bg {
   height: 100%;

@@ -1,4 +1,6 @@
 .profile {
+  animation: show 1.5s;
+  max-width: 52.2rem;
   &__pic {
     display: block;
     padding: 3rem 0;
@@ -31,6 +33,7 @@
 
   &__prev {
     border-radius: 50% 0 0 50%;
+
     img {
       width: 30%;
       max-width: 3rem;
