@@ -1,0 +1,60 @@
+$color-primary: hsl(300, 43%, 22%);
+$color-primary-grayish: hsl(303, 10%, 53%);
+$color-secondary: hsl(333, 80%, 67%);
+$color-secondary-grayish: hsl(300, 24%, 96%);
+$color-text-in-dark: hsl(0, 0%, 100%);
+$bp-sm: 620px;
+$bp-md: 960px;
+$bp-lg: 1200px;
+@mixin mq($break-point) {
+  @media screen and (min-width: $break-point) {
+    @content;
+  }
+}
+
+body {
+  font-family: "Spartan", sans-serif;
+  font-size: 1.5rem;
+  background-image: url(../images/bg-pattern-top-mobile.svg),
+    url(../images/bg-pattern-bottom-mobile.svg);
+  background-repeat: no-repeat, no-repeat;
+  background-position: top left 5%, bottom center;
+  @media screen and (max-width: 330px) {
+    font-size: 1.2rem;
+  }
+}
+
+h1,
+h2 {
+  color: $color-primary;
+}
+
+.main {
+  width: 80vw;
+  max-width: 61.4rem;
+  margin: 8.1rem auto 9.9rem auto;
+  @include mq($bp-md) {
+    max-width: 111rem;
+    margin-top: 14.4rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  &__header {
+    text-align: center;
+    @include mq($bp-md) {
+      text-align: left;
+      max-width: 80%;
+    }
+  }
+  &__title {
+    margin-bottom: 3.9rem;
+    @include mq($bp-md) {
+      font-size: 5rem;
+    }
+  }
+  &__text {
+    color: $color-primary-grayish;
+    line-height: 2rem;
+    margin-bottom: 6rem;
+  }
+}
