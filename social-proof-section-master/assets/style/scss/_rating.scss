@@ -32,19 +32,19 @@
     margin-bottom: 4.9rem;
   }
   &__stars {
-    @include mq($bp-md) {
+    @include mq($bp-lg) {
       margin-left: 3.1rem;
     }
   }
   &__star {
     padding: 0.3rem;
     @include mq($bp-md) {
-      width: 16%;
+      width: 17%;
     }
   }
 
   &__text {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     line-height: 3.7rem;
     @media screen and (max-width: 330px) {
       font-size: 1rem;
@@ -52,6 +52,9 @@
     @include mq($bp-sm) {
       margin-left: 3.4rem;
       line-height: 2rem;
+    }
+    @include mq($bp-lg) {
+      font-size: 1.5rem;
     }
   }
 }
