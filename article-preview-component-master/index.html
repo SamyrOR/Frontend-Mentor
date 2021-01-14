@@ -9,7 +9,7 @@
       rel="icon"
       type="image/png"
       sizes="32x32"
-      href="./images/favicon-32x32.png"
+      href="./assets/images/favicon-32x32.png"
     />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
@@ -21,28 +21,69 @@
     <title>Frontend Mentor | Article preview component</title>
   </head>
   <body>
-    <main>
-      <img src="" alt="" />
-      <div class="text">
-        <h1>
-          Shift the overall look and feel by adding these wonderful touches to
-          furniture in your home
-        </h1>
-        <p>
-          Ever been in a room and felt like something was missing? Perhaps it
-          felt slightly bare and uninviting. I’ve got some simple tips to help
-          you make any room feel complete.
-        </p>
-      </div>
-      <div>
-        <img src="" alt="" />
-        <h1></h1>
-        <p>
-          <img src="" alt="" />
-        </p>
+    <main class="main">
+      <img class="main__img" src="./assets/images/drawers.jpg" alt="Drawers" />
+      <div class="container">
+        <div class="desc">
+          <h1 class="desc__title">
+            Shift the overall look and feel by adding these wonderful touches to
+            furniture in your home
+          </h1>
+          <p class="desc__info">
+            Ever been in a room and felt like something was missing? Perhaps it
+            felt slightly bare and uninviting. I’ve got some simple tips to help
+            you make any room feel complete.
+          </p>
+        </div>
+        <div class="profile">
+          <div class="profile__wrapper">
+            <img
+              class="profile__img"
+              src="./assets/images/avatar-michelle.jpg"
+              alt="Avatar"
+            />
+            <div class="profile__text">
+              <h1 class="profile__name">Michelle Appleton</h1>
+              <p class="profile__since">28 Jun 2020</p>
+            </div>
+          </div>
+          <div class="share">
+            <img
+              class="share__icon"
+              src="./assets/images/icon-share.svg"
+              alt="Share icon"
+            />
+            <div class="social">
+              <p class="social__text">Share</p>
+              <div class="social__icons">
+                <img
+                  class="social__icon"
+                  src="./assets/images/icon-facebook.svg"
+                  alt="Facebook Icon"
+                />
+                <img
+                  class="social__icon"
+                  src="./assets/images/icon-twitter.svg"
+                  alt="Twitter Icon"
+                />
+                <img
+                  class="social__icon"
+                  src="./assets/images/icon-pinterest.svg"
+                  alt="Pinterest Icon"
+                />
+              </div>
+              <div class="share">
+                <img
+                  class="share__icon"
+                  src="./assets/images/icon-share.svg"
+                  alt="Share icon"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </main>
-    Michelle Appleton 28 Jun 2020 Share
 
     <div class="attribution">
       Challenge by

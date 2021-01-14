@@ -4,6 +4,31 @@ $color-primary-dark: hsl(214, 17%, 51%);
 $color-primary-darker: hsl(217, 19%, 35%);
 
 body {
+  background-color: $color-primary-light;
   font-size: 1.3rem;
   font-family: "Manrope", sans-serif;
+}
+
+h1 {
+  color: $color-primary-darker;
+}
+p {
+  color: $color-primary-dark;
+}
+.main {
+  position: relative;
+  width: 80vw;
+  max-width: 66rem;
+  margin: 7.4rem auto;
+  padding-bottom: 2rem;
+  border-radius: 1.5rem;
+  background-color: #fff;
+  &__img {
+    border-radius: 1.5rem 1.5rem 0 0;
+  }
+}
+
+.container {
+  width: 80%;
+  margin: 4.5rem auto 0;
 }
