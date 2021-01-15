@@ -4,5 +4,8 @@
   }
   &__info {
     margin: 2.5rem 0;
+    @include mq($bp-md) {
+      margin: 1rem 0;
+    }
   }
 }
