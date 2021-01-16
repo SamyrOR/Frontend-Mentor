@@ -1,0 +1,21 @@
+.share {
+  width: 5rem;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: $color-primary-light;
+  cursor: pointer;
+
+  @include mq($bp-sm) {
+    height: 5rem;
+  }
+  &__icon {
+    text-align: center;
+    width: 1.6rem;
+    @include mq($bp-sm) {
+      width: 2rem;
+    }
+  }
+}
