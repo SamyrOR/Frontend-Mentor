@@ -1,0 +1,17 @@
+.profile--active {
+  background-color: $color-primary-darker;
+  border-radius: 0 0 1.5rem 1.5rem;
+  @include mq($bp-md) {
+    background-color: #fff;
+    border-radius: none;
+  }
+}
+.display {
+  display: flex;
+}
+.share--active {
+  background-color: $color-primary;
+  .share__icon {
+    filter: brightness(0) invert(1);
+  }
+}
