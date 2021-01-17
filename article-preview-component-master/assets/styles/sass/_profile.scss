@@ -19,6 +19,9 @@
   }
   &__name {
     font-size: 1.3rem;
+    @include mq($bp-xs) {
+      font-size: 1rem;
+    }
   }
   &__img {
     width: 20%;
