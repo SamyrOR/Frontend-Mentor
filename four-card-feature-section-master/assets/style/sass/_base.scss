@@ -1,0 +1,65 @@
+$color-red: hsl(0, 78%, 62%);
+$color-cyan: hsl(180, 62%, 55%);
+$color-orange: hsl(34, 97%, 64%);
+$color-blue: hsl(212, 86%, 64%);
+$color-blue-dark: hsl(234, 12%, 34%);
+$color-blue-grayish: hsl(229, 6%, 66%);
+$color-light-gray: hsl(0, 0%, 98%);
+
+$bp-sm: 620px;
+$bp-md: 960px;
+$bp-lg: 1200px;
+
+@mixin mq($bp) {
+  @media screen and (min-width: $bp) {
+    @content;
+  }
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.5rem;
+  background-color: $color-light-gray;
+}
+
+.header {
+  padding: 9.1rem 0 8.2rem 0;
+  text-align: center;
+
+  &__wrapper {
+    @include mq($bp-md) {
+      margin: 0 auto;
+      max-width: 51.8rem;
+    }
+  }
+  &__title {
+    font-size: 2.4rem;
+    color: $color-blue-dark;
+    font-weight: 200;
+    @include mq($bp-md) {
+      font-size: 3.2rem;
+    }
+  }
+  &__text {
+    margin-top: 3rem;
+    color: $color-blue-grayish;
+  }
+}
+
+.container {
+  width: 80vw;
+  margin: 0 auto;
+}
+
+.main {
+  @include mq($bp-md) {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 3rem;
+    max-width: 115.2rem;
+  }
+}
+.bold {
+  font-weight: bolder;
+}
