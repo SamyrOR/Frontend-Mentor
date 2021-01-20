@@ -1,0 +1,29 @@
+.header {
+  padding: 9.1rem 0 8.2rem 0;
+  text-align: center;
+  @include mq($bp-md) {
+    padding-top: 4rem;
+  }
+
+  &__wrapper {
+    @include mq($bp-md) {
+      margin: 0 auto;
+      max-width: 51.8rem;
+    }
+  }
+  &__title {
+    font-size: 2.4rem;
+    color: $color-blue-dark;
+    font-weight: 200;
+    @include mq($bp-md) {
+      font-size: 3.2rem;
+    }
+  }
+  &__text {
+    margin-top: 3rem;
+    color: $color-blue-grayish;
+  }
+}
+.bold {
+  font-weight: bolder;
+}
