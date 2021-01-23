@@ -1,0 +1,17 @@
+html {
+  background-image: linear-gradient(
+    $gradient-deg,
+    $first-gradient-from,
+    $first-gradient-to
+  );
+}
+body {
+  font-family: $main-font;
+  font-size: 1.6rem;
+}
+
+.container {
+  margin: 0 auto;
+  width: 80vw;
+  max-width: 49.6rem;
+}

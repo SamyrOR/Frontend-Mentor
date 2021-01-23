@@ -1,6 +1,6 @@
 # Frontend Mentor - Article preview component
 
-![Design preview for the Article preview component coding challenge](./design/desktop-preview.jpg)
+![Design preview for the Article preview component coding challenge](./assets/images/desktop-preview.jpg)
 
 ## Welcome! 👋
 
@@ -18,7 +18,7 @@ You can use any tools you like to help you complete the challenge. So if you've 
 
 The only JavaScript you'll need for this challenge is to initiate the share options when someone clicks the share icon.
 
-Your users should be able to: 
+Your users should be able to:
 
 - View the optimal layout for the component depending on their device's screen size
 - See the social media share links when they click the share icon
@@ -27,7 +27,7 @@ Want some support on the challenge? [Join our Slack community](https://www.front
 
 ## Where to find everything
 
-Your task is to build out the project to the designs inside the `/design` folder. You will find both a mobile and a desktop version of the design to work to. 
+Your task is to build out the project to the designs inside the `/design` folder. You will find both a mobile and a desktop version of the design to work to.
 
 The designs are in JPG static format. This will mean that you'll need to use your best judgment for styles such as `font-size`, `padding` and `margin`. This should help train your eye to perceive differences in spacings and sizes.
 
