@@ -2,5 +2,13 @@
   margin: 3.1rem auto;
   &__logo {
     width: 10rem;
+    cursor: pointer;
+  }
+  @include mq($bp-lg) {
+    width: 44.4rem;
+    margin: 6.6rem auto;
+    &__logo {
+      width: 15.8rem;
+    }
   }
 }

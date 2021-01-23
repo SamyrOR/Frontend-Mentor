@@ -21,4 +21,16 @@
       font-size: 1.6rem;
     }
   }
+  @include mq($bp-lg) {
+    max-width: 44.4rem;
+    text-align: left;
+    &__title {
+      margin: 0;
+      letter-spacing: 2rem;
+      line-height: 6rem;
+    }
+    &__text {
+      font-weight: 1.6rem;
+    }
+  }
 }

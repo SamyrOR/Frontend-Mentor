@@ -6,4 +6,11 @@
   background-size: 100%;
   background-repeat: no-repeat;
   margin: 0 auto;
+  @include mq($bp-lg) {
+    grid-column: 2/3;
+    grid-row: 1/3;
+    height: 100%;
+    background-image: url("../images/hero-desktop.jpg");
+    background-size: cover;
+  }
 }

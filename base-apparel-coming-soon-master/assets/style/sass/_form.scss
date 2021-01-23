@@ -1,5 +1,6 @@
 .form {
   position: relative;
+
   &__input {
     padding-left: 2rem;
     width: 100%;
@@ -27,7 +28,38 @@
     border-radius: 5rem;
     box-shadow: 0px 1rem 1rem
       rgba($color: $color-primary-desaturated, $alpha: 0.5);
+    outline: none;
     &:hover {
+      cursor: pointer;
+      background-image: linear-gradient(
+        to right,
+        $second-gradient-from,
+        $second-gradient-from
+      );
+    }
+  }
+  @include mq($bp-lg) {
+    &__button {
+      width: 10rem;
+    }
+  }
+}
+.error {
+  display: none;
+  &__icon {
+    position: absolute;
+    top: 1.2rem;
+    right: 7.5rem;
+  }
+  &__text {
+    color: $color-primary;
+    font-size: 1.2rem;
+    padding: 1rem 0 1rem 2rem;
+    text-align: left;
+  }
+  @include mq($bp-lg) {
+    &__icon {
+      right: 12rem;
     }
   }
 }

@@ -20,37 +20,46 @@
     <title>Frontend Mentor | Base Apparel coming soon page</title>
   </head>
   <body>
-    <header class="header container">
-      <img
-        class="header__logo"
-        src="./assets/images/logo.svg"
-        alt="Company logo"
-      />
-    </header>
-    <div class="hero"></div>
-    <main class="main container">
-      <h1 class="main__title">
-        <span>We're</span>
-        <span>coming soon</span>
-      </h1>
-      <p class="main__text">
-        Hello fellow shoppers! We're currently building our new fashion store.
-        Add your email below to stay up-to-date with announcements and our
-        launch deals.
-      </p>
-      <form class="form" action="">
-        <input
-          class="form__input"
-          type="email"
-          placeholder="Email Address"
-          required
+    <div class="display-grid">
+      <header class="header container">
+        <img
+          class="header__logo"
+          src="./assets/images/logo.svg"
+          alt="Company logo"
         />
-        <button class="form__button" type="submit">
-          <img src="./assets/images/icon-arrow.svg" alt="Icon arrow" />
-        </button>
-      </form>
-    </main>
-
+      </header>
+      <div class="hero"></div>
+      <main class="main container">
+        <h1 class="main__title">
+          <span>We're</span>
+          <span>coming soon</span>
+        </h1>
+        <p class="main__text">
+          Hello fellow shoppers! We're currently building our new fashion store.
+          Add your email below to stay up-to-date with announcements and our
+          launch deals.
+        </p>
+        <form class="form">
+          <input
+            class="form__input"
+            type="email"
+            placeholder="Email Address"
+            required
+          />
+          <button class="form__button">
+            <img src="./assets/images/icon-arrow.svg" alt="Icon arrow" />
+          </button>
+          <div class="error">
+            <img
+              class="error__icon"
+              src="./assets/images/icon-error.svg"
+              alt="Error Icon"
+            />
+            <p class="error__text">Please provide a valid email</p>
+          </div>
+        </form>
+      </main>
+    </div>
     <footer>
       <p class="attribution">
         Challenge by
@@ -60,5 +69,6 @@
         <a href="https://samyror.github.io" target="_blank">Samyr OR</a>.
       </p>
     </footer>
+    <script src="./assets/js/form-validator.js"></script>
   </body>
 </html>
