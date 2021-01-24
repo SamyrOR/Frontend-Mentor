@@ -1,0 +1,31 @@
+.main {
+  margin-top: 9.9rem;
+  @include mq($bp-lg) {
+    height: 80vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 6.8rem;
+  }
+}
+
+.content {
+  text-align: center;
+  color: $color-text;
+  &__title {
+    @extend %centralized;
+    max-width: 22.8rem;
+  }
+  &__text {
+    margin-top: 3.7rem;
+    font-weight: 500;
+  }
+  @include mq($bp-lg) {
+    max-width: 50rem;
+    text-align: left;
+    &__title {
+      font-size: 4.2rem;
+      max-width: none;
+    }
+  }
+}

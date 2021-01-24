@@ -1,0 +1,105 @@
+.accent {
+  @extend %shadow;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 6.8rem;
+  height: 9rem;
+  width: 100%;
+  background-color: $color-accent;
+  color: $color-text;
+  border-radius: 1rem;
+  border: 1px solid rgba($color: $color-primary, $alpha: 0.1);
+  &__text {
+    text-align: center;
+    max-width: 20rem;
+  }
+  &__bold {
+    font-weight: bold;
+  }
+  @include mq($bp-sm) {
+    height: 6rem;
+    &__text {
+      max-width: none;
+    }
+  }
+  @include mq($bp-lg) {
+    margin-top: 0;
+  }
+}
+
+.form {
+  @extend %shadow;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 44.3rem;
+  margin-top: 2.2rem;
+  background-color: #fff;
+  padding: 2.4rem;
+  border-radius: 1rem;
+  &__control {
+    position: relative;
+    margin-bottom: 1.6rem;
+  }
+  &__input {
+    @extend %form-content-layout;
+    border: 1px solid #acac;
+    padding-left: 1.9rem;
+    outline: none;
+    font-weight: bold;
+
+    &::placeholder {
+      font-weight: bold;
+      color: $color-accent-dark;
+    }
+    &:focus {
+      .error {
+        display: none;
+      }
+      border: 1px solid rgba($color: $color-accent-dark, $alpha: 0.5);
+    }
+  }
+  &__button {
+    @extend %form-content-layout;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    color: $color-text;
+    font-weight: bold;
+    background-color: $color-secondary;
+    border: 0;
+    border-bottom: 0.4rem solid darken($color: $color-secondary, $amount: 10);
+    outline: none;
+  }
+  &__license {
+    color: $color-accent-grayish;
+    padding: 1rem;
+    text-align: center;
+    font-size: 1.2rem;
+  }
+  &__terms {
+    color: $color-primary;
+    font-weight: bold;
+  }
+}
+
+.error {
+  display: none;
+  &__icon {
+    position: absolute;
+    right: 2rem;
+    top: 1.5rem;
+  }
+  &__text {
+    margin-top: 0.5rem;
+    font-size: 1.2rem;
+    font-style: italic;
+    text-align: right;
+    color: $color-primary;
+  }
+}
+
+.invalid {
+  color: $color-primary;
+  border-color: $color-primary;
+}

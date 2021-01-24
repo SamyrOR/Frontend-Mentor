@@ -1,0 +1,24 @@
+$color-primary: hsl(0, 100%, 74%);
+$color-secondary: hsl(154, 59%, 51%);
+$color-accent: hsl(248, 32%, 49%);
+$color-accent-dark: hsl(249, 10%, 26%);
+$color-accent-grayish: hsl(246, 25%, 77%);
+$color-text: #fff;
+$main-font: "Poppins", sans-serif;
+$bp-sm: 620px;
+$bp-md: 960px;
+$bp-lg: 1200px;
+
+%centralized {
+  margin: 0 auto;
+}
+
+%form-content-layout {
+  border-radius: 0.5rem;
+  height: 5.6rem;
+  width: 100%;
+}
+
+%shadow {
+  box-shadow: 0rem 1rem 0rem rgba($color: #000000, $alpha: 0.2);
+}

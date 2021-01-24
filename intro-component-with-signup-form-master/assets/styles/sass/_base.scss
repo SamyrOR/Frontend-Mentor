@@ -1,0 +1,18 @@
+html {
+  background-image: url(../images/bg-intro-mobile.png);
+  background-color: $color-primary;
+}
+
+body {
+  font-size: 1.6rem;
+  font-family: $main-font;
+}
+
+.container {
+  width: 90vw;
+  max-width: 62rem;
+  margin: 0 auto;
+  @include mq($bp-lg) {
+    max-width: 111rem;
+  }
+}
