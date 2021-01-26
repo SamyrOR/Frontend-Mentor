@@ -1,0 +1,14 @@
+.header {
+  margin-top: 17rem;
+  text-align: center;
+  &__title {
+    margin-top: 8.9rem;
+    font-size: 2.4rem;
+    font-weight: 300;
+    color: $color-neutral;
+    &--bold {
+      font-weight: bold;
+      color: black;
+    }
+  }
+}
