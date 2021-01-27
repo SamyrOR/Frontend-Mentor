@@ -1,7 +1,10 @@
 @import "./variables";
+@import "./mixins";
 
 @import "./resets";
-
 @import "./base";
+
 @import "./header";
+@import "./main";
+@import "./form";
 @import "./footer";

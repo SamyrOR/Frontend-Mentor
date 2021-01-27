@@ -21,33 +21,68 @@
   </head>
   <body>
     <header class="header container">
-      <img class="header__logo" src="./assets/images/logo.svg" alt="" />
+      <img
+        class="header__logo"
+        src="./assets/images/logo.svg"
+        alt="Ping logo"
+      />
       <h1 class="header__title">
         We are launching <span class="header__title--bold">soon!</span>
       </h1>
     </header>
     <main class="main container">
-      <p class="">Subscribe and get notified</p>
-      <form action="">
-        <input type="text" />
-        <button>Notify Me</button>
+      <p class="main__message">Subscribe and get notified</p>
+      <form class="form" action="">
+        <div class="form__control">
+          <input
+            id="email"
+            class="form__input"
+            type="text"
+            placeholder="Your email address.."
+          />
+          <p class="error-text">Lorem ipsum</p>
+        </div>
+        <button class="form__button">Notify Me</button>
       </form>
-      <img src="./assets/images/illustration-dashboard.png" alt="" />
+      <img
+        class="main__hero"
+        src="./assets/images/illustration-dashboard.png"
+        alt="Dashboard"
+      />
     </main>
-
-    <footer>
-      <section>
-        <img src="./assets/images/facebook-f-brands.svg" alt="" />
-        <img src="./assets/images/twitter-brands.svg" alt="" />
-        <img src="./assets/images/instagram-brands.svg" alt="" />
+    <footer class="footer">
+      <section class="footer__socials">
+        <div class="footer__social__wrapper">
+          <img
+            class="footer__social fb"
+            src="./assets/images/facebook-f-brands.svg"
+            alt="Facebook icon"
+          />
+        </div>
+        <div class="footer__social__wrapper">
+          <img
+            class="footer__social"
+            src="./assets/images/twitter-brands.svg"
+            alt="Twitter icon"
+          />
+        </div>
+        <div class="footer__social__wrapper">
+          <img
+            class="footer__social"
+            src="./assets/images/instagram-brands.svg"
+            alt="Instagram icon"
+          />
+        </div>
       </section>
-      <p>&copy; Copyright Ping. All rights reserved.</p>
+      <p class="footer__copy">&copy; Copyright Ping. All rights reserved.</p>
       <p class="attribution">
         Challenge by
         <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
           >Frontend Mentor</a
-        >. Coded by <a href="#">Your Name Here</a>.
+        >. Coded by
+        <a href="https://samyror.github.io" target="_blank">Samyr OR</a>.
       </p>
     </footer>
+    <script src="./assets/js/form-validator.js"></script>
   </body>
 </html>

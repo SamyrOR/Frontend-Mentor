@@ -1,14 +1,20 @@
 .header {
-  margin-top: 17rem;
+  margin-top: 10rem;
   text-align: center;
   &__title {
-    margin-top: 8.9rem;
+    margin-top: 5rem;
     font-size: 2.4rem;
     font-weight: 300;
     color: $color-neutral;
     &--bold {
       font-weight: bold;
       color: black;
+    }
+  }
+  @include mq($bp-sm) {
+    margin-top: 8.6rem;
+    &__title {
+      font-size: 3.2rem;
     }
   }
 }

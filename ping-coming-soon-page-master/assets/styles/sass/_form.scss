@@ -1,0 +1,66 @@
+%form-layout {
+  height: 5rem;
+  border-radius: 5rem;
+  outline: none;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 5rem;
+  &__control {
+    width: 100%;
+    p {
+      display: none;
+    }
+  }
+  &__input {
+    @extend %form-layout;
+    width: 100%;
+    padding-left: 4rem;
+    border: 1px solid $color-primary-pale;
+    &::placeholder {
+      color: $color-primary-pale;
+    }
+  }
+  &__button {
+    @extend %form-layout;
+    margin-top: 1rem;
+    border: none;
+    color: $color-text-in-primary;
+    font-size: 1.6rem;
+    font-weight: bold;
+    background-color: $color-primary;
+    box-shadow: 0rem 1.2rem 1rem $color-primary-pale;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  @include mq($bp-sm) {
+    &__control {
+      flex: 2;
+    }
+    &__button {
+      width: 20rem;
+      margin-top: 0;
+      margin-left: 2rem;
+    }
+    flex-direction: row;
+  }
+}
+
+.invalid {
+  border-color: $color-secondary;
+}
+.error {
+  .form__input {
+    border-color: $color-secondary;
+  }
+  p {
+    display: block;
+    text-align: left;
+    font-size: 1.2rem;
+    color: $color-secondary;
+    font-style: italic;
+    margin: 0.5rem 0 0 4rem;
+  }
+}

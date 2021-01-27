@@ -1,7 +1,55 @@
+.footer {
+  margin: 20% auto 0;
+  max-width: 33.4rem;
+  &__social__wrapper {
+    display: flex;
+    justify-content: center;
+    margin-left: 4rem;
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    border: 1px solid $color-primary-pale;
+    &:first-child {
+      margin-left: 0;
+    }
+    &:hover {
+      cursor: pointer;
+      background-color: $color-primary;
+      .footer__social {
+        filter: invert(100%);
+      }
+    }
+  }
+  &__socials {
+    justify-content: center;
+    display: flex;
+    width: 100%;
+  }
+  &__social {
+    width: 2.5rem;
+    filter: invert(48%) sepia(35%) saturate(4218%) hue-rotate(206deg)
+      brightness(96%) contrast(97%);
+  }
+  &__copy {
+    color: $color-neutral;
+    margin-top: 3rem;
+    font-size: 1.4rem;
+    text-align: center;
+  }
+  @include mq($bp-sm) {
+    margin-top: 10%;
+  }
+}
+
 .attribution {
+  margin-top: 2rem;
   font-size: 11px;
   text-align: center;
 }
 .attribution a {
   color: hsl(228, 45%, 44%);
+}
+
+.fb {
+  width: 1.5rem;
 }
