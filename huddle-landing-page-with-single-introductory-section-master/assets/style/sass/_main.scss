@@ -1,0 +1,39 @@
+.main {
+  text-align: center;
+  margin-top: 7rem;
+  color: #fff;
+  &__title {
+    font-family: $heading-font;
+    font-size: 2.4rem;
+  }
+  &__text {
+    margin-top: 2rem;
+    line-height: 2.5rem;
+  }
+  &__button {
+    margin-top: 2rem;
+    width: 20rem;
+    height: 4rem;
+    color: $color-primary;
+    border-radius: 5rem;
+    border: none;
+    box-shadow: 0 0.6rem 1rem rgba($color: #000000, $alpha: 0.3);
+  }
+  @include mq($bp-lg) {
+    width: 49.3rem;
+    margin-top: 0;
+    margin-left: 5rem;
+    text-align: left;
+    &__title {
+      font-size: 3.6rem;
+    }
+    &__button {
+      width: 15rem;
+      &:hover {
+        cursor: pointer;
+        color: #fff;
+        background-color: $color-secondary;
+      }
+    }
+  }
+}

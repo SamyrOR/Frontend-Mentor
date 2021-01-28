@@ -1,0 +1,33 @@
+html {
+  background-color: $color-primary;
+  background-image: url(../images/bg-mobile.svg);
+  background-repeat: no-repeat;
+  background-size: 100vw;
+  @include mq($bp-lg) {
+    background-image: url(../images/bg-desktop.svg);
+    background-size: cover;
+  }
+}
+
+body {
+  font-family: $main-font;
+  font-size: 1.6rem;
+}
+
+.container {
+  width: 80vw;
+  max-width: 620px;
+  margin: 0 auto;
+  @include mq($bp-lg) {
+    width: 90vw;
+    max-width: 1440px;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.wrapper {
+  @include mq(bp-lg) {
+    display: flex;
+  }
+}

@@ -1,0 +1,44 @@
+.footer {
+  margin-top: 10rem;
+  &__socials {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+  &__social {
+    margin-left: 2rem;
+    text-align: center;
+    font-size: 2rem;
+    line-height: 4rem;
+    border: 1px solid;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    color: #fff;
+    &:first-child {
+      margin-left: 0;
+    }
+    &:hover {
+      cursor: pointer;
+      color: $color-secondary;
+    }
+  }
+  @include mq($bp-lg) {
+    display: flex;
+    justify-content: start;
+    flex-direction: column;
+    // position: absolute;
+    // right: 0;
+    // bottom: 1rem;
+  }
+}
+
+.attribution {
+  margin-top: 5rem;
+  font-size: 11px;
+  text-align: center;
+}
+.attribution a {
+  color: $color-secondary;
+}

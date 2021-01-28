@@ -1,0 +1,17 @@
+.header {
+  margin-top: 3rem;
+  &__logo {
+    width: 11rem;
+  }
+  &__hero {
+    margin-top: 5rem;
+  }
+  @include mq($bp-lg) {
+    &__logo {
+      width: 20rem;
+    }
+    &__hero {
+      width: 100%;
+    }
+  }
+}
