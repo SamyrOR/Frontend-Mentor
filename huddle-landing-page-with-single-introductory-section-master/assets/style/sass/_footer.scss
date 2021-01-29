@@ -25,15 +25,14 @@
     }
   }
   @include mq($bp-lg) {
-    display: flex;
-    justify-content: start;
-    flex-direction: column;
-    // position: absolute;
-    // right: 0;
-    // bottom: 1rem;
+    &__socials {
+      display: block;
+      padding-right: 10rem;
+    }
+    width: 100%;
+    text-align: right;
   }
 }
-
 .attribution {
   margin-top: 5rem;
   font-size: 11px;
