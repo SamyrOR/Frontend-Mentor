@@ -1,0 +1,84 @@
+/* Variables */
+:root {
+  --color-primary-1: hsl(31, 77%, 52%);
+  --color-primary-2: hsl(184, 100%, 22%);
+  --color-primary-3: hsl(179, 100%, 13%);
+  --color-neutral-1: hsla(0, 0%, 100%, 0.75);
+  --color-neutral-2: hsl(0, 0%, 95%);
+  --font-text: "Lexend Deca", sans-serif;
+  --font-headings: "Big Shoulders Display", cursive;
+}
+/* Resets */
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.5rem;
+}
+/* Base */
+.container {
+  width: 90%;
+  max-width: 120rem;
+  margin: 8.8rem auto;
+}
+/* Components */
+
+.card {
+  padding: 5rem;
+}
+
+.bg--orange {
+  background-color: var(--color-primary-1);
+}
+
+.card__title {
+  margin-top: 4rem;
+  font-family: var(--font-headings);
+  font-size: 4rem;
+  text-transform: uppercase;
+  color: var(--color-neutral-2);
+}
+
+.card__text {
+  margin-top: 4rem;
+  font-family: var(--font-text);
+  color: var(--color-neutral-1);
+}
+
+.card__button {
+  height: 5rem;
+  width: 14.5rem;
+  margin-top: 3rem;
+  border-radius: 5rem;
+  border: none;
+  font-weight: bold;
+  font-size: 1.4rem;
+  font-family: var(--font-text);
+  transition: all 0.2s ease-in;
+}
+
+.card__button:hover {
+  cursor: pointer;
+  border: 0.2rem solid var(--color-neutral-1);
+  background-color: hsla(0, 0%, 100%, 0);
+  color: var(--color-neutral-1);
+}
+.orange__text {
+  color: var(--color-primary-1);
+}
+.attribution {
+  font-size: 11px;
+  text-align: center;
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
