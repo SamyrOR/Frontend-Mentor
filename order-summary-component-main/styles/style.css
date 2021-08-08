@@ -157,9 +157,6 @@ body {
     font-weight: 900;
     cursor: pointer;
 }
-.btn__cancel:hover {
-    color: var(--dark-blue);
-}
 
 footer {
     margin-top: 10rem;
@@ -173,14 +170,6 @@ footer {
 @media screen and (min-width: 768px) {
     body {
         background-image: url(../images/pattern-background-desktop.svg);
-        background-size: auto;
-    }
-    
-}
-@media screen and (min-width: 1440px) {
-    body {
-        background-size: contain;
-        background-position: center -15rem;
     }
     
 }
