@@ -173,6 +173,10 @@ footer {
 @media screen and (min-width: 768px) {
     body {
         background-image: url(../images/pattern-background-desktop.svg);
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> f5ea160e0482502c1ea92685abc20e7ac3496a2a
         background-size: auto;
     }
     
@@ -181,6 +185,11 @@ footer {
     body {
         background-size: contain;
         background-position: center -15rem;
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> db72c4d756a96d1468dbafc03423257ad3752c73
+>>>>>>> f5ea160e0482502c1ea92685abc20e7ac3496a2a
     }
     
 }
