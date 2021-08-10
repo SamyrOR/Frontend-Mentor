@@ -1,0 +1,134 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Lexend+Deca&display=swap");
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  height: 100vh;
+  font-size: 62.5%;
+}
+
+html {
+  background-color: #090b1a;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  font-size: 1.5rem;
+}
+
+.container {
+  width: 90vw;
+  margin: 0 auto;
+}
+@media (min-width: 992px) {
+  .container {
+    width: 95vw;
+  }
+}
+
+.card {
+  max-width: 60rem;
+  background-color: #1b1938;
+  margin-top: 8.8rem;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+.card__wrapper {
+  display: grid;
+  place-items: center;
+}
+.card__image {
+  display: block;
+  max-width: 100%;
+  content: url(../images/image-header-mobile.jpg);
+  mix-blend-mode: multiply;
+  opacity: 0.8;
+}
+.card .image__wrapper {
+  background-color: #aa5cdb;
+}
+.card__title {
+  color: white;
+  font-size: 3rem;
+}
+.card__text {
+  margin-top: 3rem;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 2.5rem;
+  text-indent: 0.8rem;
+  font-size: 1.6rem;
+}
+.card__text--accent {
+  color: #aa5cdb;
+}
+.card__body {
+  margin-top: 5rem;
+  padding: 0 2rem;
+  text-align: center;
+}
+.card__stats {
+  margin: 5rem 0 4rem 0;
+  height: 25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.card__stats .stat__title {
+  font-size: 3rem;
+  color: white;
+}
+.card__stats .stat__text {
+  margin-top: 1rem;
+  font-family: "Lexend Deca", sans-serif;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+}
+@media (min-width: 1200px) {
+  .card {
+    display: grid;
+    grid-template-columns: 1fr 60.5rem;
+    height: 44.3rem;
+    max-width: 115rem;
+    margin-top: 16rem;
+  }
+  .card__image {
+    grid-area: 2;
+    background-image: url(../images/image-header-desktop.jpg);
+  }
+  .card__body {
+    margin-top: 0;
+    padding: 6.5rem;
+    text-align: left;
+    grid-area: 1;
+  }
+  .card__text {
+    text-indent: 0;
+  }
+  .card__stats {
+    height: 3rem;
+    margin-top: 8.3rem;
+    flex-direction: row;
+  }
+}
+
+footer {
+  margin-top: 10rem;
+}
+
+.attribution {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 11px;
+  text-align: center;
+}
+
+.attribution a {
+  color: #aa5cdb;
+}
+
+/*# sourceMappingURL=style.css.map */

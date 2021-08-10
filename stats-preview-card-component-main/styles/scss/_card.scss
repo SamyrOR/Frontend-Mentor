@@ -1,0 +1,91 @@
+@use './variables';
+@use './mixins';
+
+.card {
+  max-width: 60rem;
+  background-color: variables.$card-bg;
+  margin-top: 8.8rem;
+  border-radius: 1rem;
+  overflow: hidden;
+  &__wrapper {
+    display: grid;
+    place-items: center;
+  }
+  &__image {
+    display: block;
+    max-width: 100%;
+    content: url(../images/image-header-mobile.jpg);
+    mix-blend-mode: multiply;
+    opacity: 0.8;
+  }
+  .image {
+    &__wrapper {
+      background-color: variables.$accent;
+    }
+  }
+  &__title {
+    color: variables.$main-heading;
+    font-size: 3rem;
+  }
+  &__text {
+    margin-top: 3rem;
+    color: variables.$main-paragraph;
+    line-height: 2.5rem;
+    text-indent: 0.8rem;
+    font-size: 1.6rem;
+    &--accent {
+      color: variables.$accent;
+    }
+  }
+  &__body {
+    margin-top: 5rem;
+    padding: 0 2rem;
+    text-align: center;
+  }
+  &__stats {
+    margin: 5rem 0 4rem 0;
+    height: 25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .stat {
+      &__title {
+        font-size: 3rem;
+        color: variables.$main-heading;
+      }
+      &__text {
+        margin-top: 1rem;
+        font-family: variables.$lexand-family;
+        color: variables.$stat-headings;
+        text-transform: uppercase;
+        letter-spacing: 0.1rem;
+      }
+    }
+  }
+  @include mixins.xl {
+    display: grid;
+    grid-template-columns: 1fr 60.5rem;
+    height: 44.3rem;
+    max-width: 115rem;
+    margin-top: 16rem;
+    &__image {
+      grid-area: 2;
+      background-image: url(../images/image-header-desktop.jpg);
+    }
+    &__body {
+      margin-top: 0;
+      padding: 6.5rem;
+      text-align: left;
+      grid-area: 1;
+    }
+    &__text {
+      text-indent: 0;
+    }
+    &__stats {
+      height: 3rem;
+      margin-top: 8.3rem;
+      flex-direction: row;
+    }
+  }
+}
