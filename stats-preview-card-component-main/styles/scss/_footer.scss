@@ -1,0 +1,12 @@
+@use './variables';
+footer {
+  margin-top: 10rem;
+}
+.attribution {
+  color: variables.$main-paragraph;
+  font-size: 11px;
+  text-align: center;
+}
+.attribution a {
+  color: variables.$accent;
+}
