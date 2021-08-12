@@ -50,6 +50,7 @@
     justify-content: space-between;
 
     .stat {
+      list-style-type: none;
       &__title {
         font-size: 3rem;
         color: variables.$main-heading;
@@ -68,7 +69,7 @@
     grid-template-columns: 1fr 60.5rem;
     height: 44.3rem;
     max-width: 115rem;
-    margin-top: 16rem;
+    margin-top: 20rem;
     &__image {
       grid-area: 2;
       background-image: url(../images/image-header-desktop.jpg);
@@ -78,6 +79,9 @@
       padding: 6.5rem;
       text-align: left;
       grid-area: 1;
+    }
+    &__title {
+      font-size: 3.6rem;
     }
     &__text {
       text-indent: 0;

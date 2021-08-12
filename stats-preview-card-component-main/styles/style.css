@@ -78,6 +78,9 @@ body {
   flex-direction: column;
   justify-content: space-between;
 }
+.card__stats .stat {
+  list-style-type: none;
+}
 .card__stats .stat__title {
   font-size: 3rem;
   color: white;
@@ -95,7 +98,7 @@ body {
     grid-template-columns: 1fr 60.5rem;
     height: 44.3rem;
     max-width: 115rem;
-    margin-top: 16rem;
+    margin-top: 20rem;
   }
   .card__image {
     grid-area: 2;
@@ -106,6 +109,9 @@ body {
     padding: 6.5rem;
     text-align: left;
     grid-area: 1;
+  }
+  .card__title {
+    font-size: 3.6rem;
   }
   .card__text {
     text-indent: 0;
