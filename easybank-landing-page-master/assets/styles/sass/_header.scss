@@ -1,0 +1,65 @@
+@use './variables' as *;
+@use './functions' as *;
+.header {
+  nav {
+    padding: rem(17) rem(24);
+  }
+  &__logo {
+    img {
+      width: rem(141);
+      height: rem(22);
+    }
+  }
+  &__menu {
+    width: rem(26);
+    background-color: $white;
+    border: none;
+    > span {
+      display: block;
+      width: 100%;
+      height: rem(2);
+      background-color: $blue-dark;
+      &:not(:last-child) {
+        margin-bottom: rem(3);
+      }
+    }
+  }
+  &__links {
+    a {
+      position: relative;
+      font-size: rem(14);
+      color: $grayish-blue;
+      transition: color 200ms ease-in-out;
+      &:not(:last-child) {
+        margin-right: rem(32);
+      }
+      &::after {
+        content: "";
+        position: absolute;
+        display: block;
+        height: rem(5);
+        left: 0;
+        right: 0;
+        bottom: rem(-30);
+        background: linear-gradient(to right, $lime-green, $cyan-bright);
+        opacity: 0;
+        transition: 300ms ease-in-out;
+      }
+      &:hover {
+        &::after {
+          opacity: 1;
+        }
+
+        color: $blue-dark;
+      }
+    }
+  }
+  &__cta {
+    font-size: rem(14);
+    color: $white;
+    transition: opacity 200ms ease-in-out;
+    &:hover {
+      opacity: 0.75;
+    }
+  }
+}

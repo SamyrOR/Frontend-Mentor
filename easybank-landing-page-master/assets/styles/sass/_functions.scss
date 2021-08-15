@@ -1,0 +1,40 @@
+// @use './variables';
+
+// @function stripUnit($value) {
+//   @return $value / ($value * 0 + 1);
+// }
+// @function rem($pxValue) {
+//   @return #{stripUnit($pxValue) / stripUnit(variables.$default-font-size)}rem;
+// }
+// Then you can use it like this,
+// .component {
+//     font-size: rem(14px); // or rem(14)
+// }
+// This will set font-size: 0.875rem to the element which has component CSS class. Do note, the value you pass to the function can be with or without a unit.
+
+// https://medium.com/@bhargav3shah/scss-convert-pixel-values-to-rem-using-functions-f1cef575edfd
+
+// OR
+
+@use 'sass:math';
+@use 'variables' as *;
+
+// Set base font size
+@function base($base-font-size) {
+  @if unitless($base-font-size) or math.unit($base-font-size) != "%" {
+    @error "Sorry, this #{$default-html-font-size} must have percentage unit!";
+  }
+
+  @return math.div($base-font-size, 100%) * 16;
+}
+
+// Change px to rem
+@function rem($value) {
+  @if unitless($value) {
+    $base-size: base($default-font-size);
+    @return math.div($value, $base-size) * 1rem;
+  }
+
+  @error "Sorry, this '#{$value}' must have not any unit";
+}
+// https://github.com/vanzasetia/order-summary-component/blob/master/scss/abstracts/_functions.scss
