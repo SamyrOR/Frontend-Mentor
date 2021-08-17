@@ -27,6 +27,16 @@ a:visited {
   text-decoration: none;
 }
 
+//Container
+.container {
+  width: 95vw;
+  max-width: rem(1200);
+  margin: 0 auto;
+  @include xl {
+    max-width: rem(1440);
+  }
+}
+
 // Flexbox
 .flex {
   display: flex;
