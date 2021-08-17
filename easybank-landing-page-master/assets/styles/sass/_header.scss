@@ -3,8 +3,6 @@
 @use './animations' as *;
 .header {
   &.open {
-    .overlay {
-    }
     .header__toggle {
       > span:first-child {
         transform: rotate(45deg);
@@ -21,7 +19,7 @@
   .overlay {
     opacity: 0;
     position: fixed;
-    top: rem(60);
+    top: 0;
     right: 0;
     bottom: 0;
     left: 0;
@@ -29,6 +27,8 @@
   }
 
   nav {
+    position: relative;
+    background-color: $white;
     padding: rem(17) 0;
   }
   &__logo {
@@ -104,10 +104,5 @@
   }
   &__cta {
     font-size: rem(14);
-    color: $white;
-    transition: opacity 200ms ease-in-out;
-    &:hover {
-      opacity: 0.75;
-    }
   }
 }
