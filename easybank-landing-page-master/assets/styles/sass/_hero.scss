@@ -1,13 +1,51 @@
-@use './functions' as *;
 @use './variables' as *;
+@use './functions' as *;
+@use './mixins' as *;
 .hero {
+  background-color: $gray-very-light;
+  .container {
+    @include lg {
+      display: flex;
+      align-items: center;
+      flex-direction: row-reverse;
+    }
+  }
   &__image {
+    width: 100vw;
     position: relative;
     min-height: rem(280);
     background-image: url(../images/bg-intro-mobile.svg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
+    @include md {
+      min-height: rem(400);
+      background-position: center 55%;
+    }
+    @include lg {
+      flex: 3;
+      min-height: rem(655);
+      background-image: none;
+      // background-image: url(../images/bg-intro-desktop.svg);
+      // background-position: left center;
+    }
+    &::before {
+      @include md {
+        background-position: center 60%;
+      }
+      @include lg {
+        content: "";
+        position: absolute;
+        height: 100%;
+        background-image: url(../images/bg-intro-mobile.svg);
+        background-repeat: no-repeat;
+        background-position: center bottom;
+        width: 145%;
+        background-image: url(../images/bg-intro-desktop.svg);
+        background-size: 122%;
+        background-position: 0 83%;
+      }
+    }
     &::after {
       content: "";
       position: absolute;
@@ -17,15 +55,24 @@
       background-size: 90%;
       background-repeat: no-repeat;
       background-position: center -7.5rem;
+      @include md {
+        background-size: 55%;
+      }
+      @include lg {
+        left: 22%;
+        width: 120%;
+        height: 122%;
+        background-size: 90%;
+        background-position: center 150%;
+      }
     }
   }
   &__text {
     text-align: center;
-    h1 {
-      font-weight: 300;
-      font-size: rem(36);
-      line-height: 1.15;
-      color: $blue-dark;
+    @include lg {
+      flex: 2;
+      text-align: left;
+      padding-left: 0;
     }
   }
 }

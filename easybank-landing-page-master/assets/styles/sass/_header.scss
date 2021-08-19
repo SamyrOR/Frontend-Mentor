@@ -29,7 +29,8 @@
   nav {
     position: relative;
     background-color: $white;
-    padding: rem(17) 0;
+    padding-top: rem(17);
+    padding-bottom: rem(17);
   }
   &__logo {
     img {
@@ -101,8 +102,5 @@
         color: $blue-dark;
       }
     }
-  }
-  &__cta {
-    font-size: rem(14);
   }
 }

@@ -1,0 +1,48 @@
+@use './variables' as *;
+@use './functions' as *;
+@use './mixins' as *;
+
+.feature {
+  background-color: $grayish-blue-light;
+  &__intro {
+    margin-bottom: rem(60);
+    @include lg {
+      max-width: 60%;
+    }
+  }
+  &__grid {
+    @include md {
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
+
+  &__item {
+    padding: rem(15);
+    @include md {
+      flex: 0 0 46%;
+    }
+    @include lg {
+      flex: 1;
+    }
+  }
+
+  &__icon {
+    margin-bottom: rem(30);
+    @include lg {
+      margin-bottom: rem(44);
+    }
+  }
+  &__title {
+    font-size: rem(20);
+    margin-bottom: rem(24);
+    @include lg {
+      font-size: rem(24);
+      margin-bottom: rem(34);
+    }
+  }
+  &__description {
+    font-size: rem(16);
+    line-height: 1.5;
+  }
+}
