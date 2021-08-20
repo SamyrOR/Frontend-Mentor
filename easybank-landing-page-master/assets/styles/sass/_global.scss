@@ -119,9 +119,9 @@ img {
   border-radius: rem(50);
   background: linear-gradient(to right, $lime-green, $cyan-bright);
   cursor: pointer;
-  transition: opacity 200ms ease-in-out;
+  transition: filter 200ms ease-in-out;
   &:hover {
-    opacity: 0.75;
+    filter: brightness(1.05);
   }
 }
 

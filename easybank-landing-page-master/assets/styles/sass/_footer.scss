@@ -1,0 +1,101 @@
+@use './variables' as *;
+@use './functions' as *;
+@use './mixins' as *;
+.footer {
+  padding: rem(40);
+  font-size: rem(14);
+  color: $white;
+  text-align: center;
+  background-color: $blue-dark;
+  .container {
+    @include lg {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 3fr;
+      grid-template-rows: 1fr auto;
+      grid-template-areas:
+        "logo links1 links2 cta"
+        "social links1 links2 copyright";
+      justify-items: start;
+    }
+  }
+  a {
+    color: $white;
+    display: inline-block;
+  }
+  img {
+    display: inline;
+  }
+  &__logo {
+    margin-bottom: rem(30);
+    @include lg {
+      grid-area: logo;
+    }
+  }
+  &__social {
+    margin-bottom: rem(30);
+    a:not(:last-child) {
+      margin-right: rem(16);
+    }
+    a {
+      svg path {
+        transition: fill 150ms ease-in-out;
+      }
+      &:hover svg path {
+        fill: $lime-green;
+      }
+    }
+    @include lg {
+      grid-area: social;
+      align-self: end;
+      margin-bottom: 0;
+    }
+  }
+  &__links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    @include lg {
+      //   justify-content: space-between;
+      align-items: flex-start;
+    }
+    a {
+      transition: color 150ms ease-in-out;
+      &:hover {
+        color: $lime-green;
+      }
+    }
+    &.col1 {
+      @include lg {
+        grid-area: links1;
+      }
+    }
+    &.col2 {
+      margin-bottom: rem(30);
+      @include lg {
+        grid-area: links2;
+        margin-bottom: 0;
+      }
+    }
+    a {
+      line-height: 2.25;
+    }
+  }
+  &__cta {
+    @include lg {
+      grid-area: cta;
+      text-align: right;
+      justify-self: end;
+    }
+    a.button {
+      margin-bottom: rem(30);
+    }
+  }
+  &__copyright {
+    @include lg {
+      grid-area: copyright;
+      justify-self: end;
+      align-self: end;
+      color: $grayish-blue;
+    }
+  }
+}

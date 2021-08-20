@@ -20,7 +20,7 @@
     gap: rem(30);
     place-items: center;
     @include md {
-      //   place-items: start;
+      place-items: start;
       grid-template-columns: repeat(2, 1fr);
     }
     @include lg {
