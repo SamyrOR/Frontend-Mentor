@@ -4,6 +4,10 @@
 
 .feature {
   background-color: $grayish-blue-light;
+  text-align: center;
+  @include md {
+    text-align: left;
+  }
   &__intro {
     margin-bottom: rem(60);
     @include lg {
@@ -35,10 +39,10 @@
   }
   &__title {
     font-size: rem(20);
-    margin-bottom: rem(24);
+    margin-bottom: rem(16);
     @include lg {
       font-size: rem(24);
-      margin-bottom: rem(34);
+      margin-bottom: rem(24);
     }
   }
   &__description {
