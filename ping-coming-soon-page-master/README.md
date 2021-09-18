@@ -1,21 +1,21 @@
 # Frontend Mentor - Ping single column coming soon solution
 
-This is a solution to the [Ping single column coming soon challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/article-preview-component-dYBN_pYFT). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
+This is a solution to the [Ping single column coming soon challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/ping-single-column-coming-soon-page-5cadd051fec04111f7b848da). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
 ## Table of contents
 
 - [Frontend Mentor - Ping single column coming soon solution](#frontend-mentor---ping-single-column-coming-soon-solution)
-	- [Table of contents](#table-of-contents)
-	- [Overview](#overview)
-		- [The challenge](#the-challenge)
-		- [Screenshot](#screenshot)
-		- [Links](#links)
-	- [My process](#my-process)
-		- [Built with](#built-with)
-		- [What I learned](#what-i-learned)
-		- [Continued development](#continued-development)
-		- [Useful resources](#useful-resources)
-	- [Author](#author)
+  - [Table of contents](#table-of-contents)
+  - [Overview](#overview)
+    - [The challenge](#the-challenge)
+    - [Screenshot](#screenshot)
+    - [Links](#links)
+  - [My process](#my-process)
+    - [Built with](#built-with)
+    - [What I learned](#what-i-learned)
+    - [Continued development](#continued-development)
+    - [Useful resources](#useful-resources)
+  - [Author](#author)
 
 ## Overview
 

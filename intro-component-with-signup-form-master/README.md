@@ -1,6 +1,6 @@
 # Frontend Mentor - Intro component with signup form solution
 
-This is a solution to the [Intro component with signup form challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/article-preview-component-dYBN_pYFT). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
+This is a solution to the [Intro component with signup form challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/intro-component-with-signup-form-5cf91bd49edda32581d28fd1). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
 ## Table of contents
 
