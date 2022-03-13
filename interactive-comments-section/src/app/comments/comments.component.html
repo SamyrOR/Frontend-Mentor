@@ -1,63 +1,88 @@
-<div class="comment mt-8">
-  <div class="comment__header">
-    <img
-      class="comment__img"
-      src="../../assets/images/avatars/image-amyrobson.png"
-      alt="Picture Profile"
-    />
-    <p class="comment__user">amyrobson</p>
-    <p class="comment__time comment__text--gray">1 month ago</p>
-  </div>
-  <!-- <div class=""> -->
-  <p class="comment__text comment__text--gray">
-    Impressive! Though it seems the drag feature could be improved. But overall
-    it looks incredible. You've nailed the design and the responsiveness at
-    various breakpoints works really well.
-  </p>
-  <!-- </div> -->
-  <div class="comment__footer">
-    <div class="comment__likes">
-      <img src="../../assets/images/icon-plus.svg" alt="" />
-      <p class="">12</p>
-      <img src="../../assets/images/icon-minus.svg" alt="" />
-    </div>
-    <div class="comment__reply">
-      <img src="../../assets/images/icon-reply.svg" alt="" />
-      <p class="">Reply</p>
-    </div>
-  </div>
-</div>
-
-<div class="comment">
-  <div class="comment__header">
-    <img
-      class="comment__img"
-      src="../../assets/images/avatars/image-juliusomo.png"
-      alt="Picture Profile"
-    />
-    <p class="comment__user">juliusomo</p>
-    <p class="comment__user--active">you</p>
-    <p class="comment__time comment__text--gray">2 days ago</p>
-  </div>
-  <p class="comment__text comment__text--gray">
-    <span class="comment__replying">@ramsesmiron</span> I couldn't agree more
-    with this. Everything moves so fast and it always seems like everyone knows
-    the newest library/framework. But the fundamentals are what stay constant.
-  </p>
-  <div class="comment__footer">
-    <div class="comment__likes">
-      <img src="../../assets/images/icon-plus.svg" alt="" />
-      <p class="">2</p>
-      <img src="../../assets/images/icon-minus.svg" alt="" />
-    </div>
-    <div class="comment__icons">
-      <div class="comment__icon">
-        <img src="../../assets/images/icon-delete.svg" alt="" />
-        <p class="comment__delete">Delete</p>
+<div class="comments">
+  <div *ngFor="let comment of comments">
+    <div class="comment">
+      <div class="comment__header">
+        <img
+          class="comment__img"
+          [src]="comment.user.image.png"
+          alt="Picture Profile of {{ comment.user.username }}"
+        />
+        <p class="comment__user">{{ comment.user.username }}</p>
+        <p *ngIf="isCurrentUser(comment)" class="comment__user--active">you</p>
+        <p class="comment__time comment__text--gray">{{ comment.createdAt }}</p>
       </div>
-      <div class="comment__icon">
-        <img src="../../assets/images/icon-edit.svg" alt="" />
-        <p class="comment__edit">Edit</p>
+      <p class="comment__text comment__text--gray">
+        {{ comment.content }}
+      </p>
+      <div class="comment__footer">
+        <div class="comment__likes">
+          <img src="../../assets/images/icon-plus.svg" alt="" />
+          <p class="">{{ comment.score }}</p>
+          <img src="../../assets/images/icon-minus.svg" alt="" />
+        </div>
+        <div
+          *ngIf="!isCurrentUser(comment)"
+          class="comment__reply-btn on-hover"
+        >
+          <img src="../../assets/images/icon-reply.svg" alt="" />
+          <p class="">Reply</p>
+        </div>
+        <div *ngIf="isCurrentUser(comment)" class="comment__icons">
+          <div class="comment__icon on-hover">
+            <img src="../../assets/images/icon-delete.svg" alt="" />
+            <p class="comment__delete">Delete</p>
+          </div>
+          <div class="comment__icon on-hover">
+            <img src="../../assets/images/icon-edit.svg" alt="" />
+            <p class="comment__edit">Edit</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="comments--reply" *ngIf="comment.replies">
+      <div class="comment comment--reply" *ngFor="let reply of comment.replies">
+        <div class="comment__header">
+          <img
+            class="comment__img"
+            [src]="reply.user.image.png"
+            alt="Picture Profile of{{ reply.user.username }}"
+          />
+          <p class="comment__user">{{ reply.user.username }}</p>
+          <p *ngIf="isCurrentUser(reply)" class="comment__user--active">you</p>
+          <p class="comment__time comment__text--gray">
+            {{ reply.createdAt }}
+          </p>
+        </div>
+        <p class="comment__text comment__text--gray">
+          <span *ngIf="reply.replyingTo" class="comment__replying"
+            >@{{ reply.replyingTo }}</span
+          >
+          {{ reply.content }}
+        </p>
+        <div class="comment__footer">
+          <div class="comment__likes">
+            <img src="../../assets/images/icon-plus.svg" alt="" />
+            <p class="">{{ reply.score }}</p>
+            <img src="../../assets/images/icon-minus.svg" alt="" />
+          </div>
+          <div
+            *ngIf="!isCurrentUser(reply)"
+            class="comment__reply-btn on-hover"
+          >
+            <img src="../../assets/images/icon-reply.svg" alt="" />
+            <p class="">Reply</p>
+          </div>
+          <div *ngIf="isCurrentUser(reply)" class="comment__icons">
+            <div class="comment__icon on-hover">
+              <img src="../../assets/images/icon-delete.svg" alt="" />
+              <p class="comment__delete">Delete</p>
+            </div>
+            <div class="comment__icon on-hover">
+              <img src="../../assets/images/icon-edit.svg" alt="" />
+              <p class="comment__edit">Edit</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -65,7 +90,7 @@
 
 <div class="send-comment">
   <textarea
-    class="send-comment__textarea"
+    class="send-comment__textarea border"
     placeholder="Add a comment..."
     name=""
     id=""
@@ -75,9 +100,9 @@
   <div class="send-comment__footer">
     <img
       class="send-comment__img"
-      src="../../assets/images/avatars/image-juliusomo.png"
-      alt="Picture Profile"
+      [src]="currentUser.image.png"
+      [alt]="currentUser.username"
     />
-    <button class="send-comment__btn">SEND</button>
+    <button class="send-comment__btn on-hover">SEND</button>
   </div>
 </div>
