@@ -53,7 +53,7 @@ body {
   }
 
   &__likes {
-    @apply flex w-28 justify-around p-2 items-center bg-blue-50 rounded-xl md:flex-col md:absolute md:w-10 md:h-24 md:left-5 md:top-8;
+    @apply flex w-28 justify-around p-2 items-center bg-gray-50 rounded-xl md:flex-col md:absolute md:w-10 md:h-24 md:left-5 md:top-8;
     p {
       @apply font-medium text-indigo-600;
     }
@@ -122,5 +122,9 @@ body {
   }
   &__img {
     @apply h-10 md:mt-1 md:h-12;
+  }
+
+  &--reply {
+    @apply w-full mx-0 mb-3;
   }
 }

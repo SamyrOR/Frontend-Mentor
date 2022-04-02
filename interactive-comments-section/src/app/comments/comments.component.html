@@ -1,6 +1,6 @@
-<div class="comments">
-  <div *ngFor="let comment of comments">
-    <div class="comment">
+<div class="comments" #commentsContainer>
+  <div *ngFor="let comment of comments; index as commentIndex">
+    <div class="comment" #commentEl>
       <div class="comment__header">
         <img
           class="comment__img"
@@ -16,31 +16,43 @@
       </p>
       <div class="comment__footer">
         <div class="comment__likes">
-          <img src="../../assets/images/icon-plus.svg" alt="" />
+          <img
+            (click)="rate(comment, 'up')"
+            src="../../assets/images/icon-plus.svg"
+            alt=""
+          />
           <p class="">{{ comment.score }}</p>
-          <img src="../../assets/images/icon-minus.svg" alt="" />
+          <img
+            (click)="rate(comment, 'down')"
+            src="../../assets/images/icon-minus.svg"
+            alt=""
+          />
         </div>
         <div
           *ngIf="!isCurrentUser(comment)"
           class="comment__reply-btn on-hover"
         >
           <img src="../../assets/images/icon-reply.svg" alt="" />
-          <p class="">Reply</p>
+          <p (click)="replyComment(commentEl, comment)">Reply</p>
         </div>
         <div *ngIf="isCurrentUser(comment)" class="comment__icons">
           <div class="comment__icon on-hover">
             <img src="../../assets/images/icon-delete.svg" alt="" />
-            <p class="comment__delete">Delete</p>
+            <p (click)="delete()" class="comment__delete">Delete</p>
           </div>
           <div class="comment__icon on-hover">
             <img src="../../assets/images/icon-edit.svg" alt="" />
-            <p class="comment__edit">Edit</p>
+            <p (click)="edit()" class="comment__edit">Edit</p>
           </div>
         </div>
       </div>
     </div>
-    <div class="comments--reply" *ngIf="comment.replies">
-      <div class="comment comment--reply" *ngFor="let reply of comment.replies">
+
+    <div class="comments--reply" *ngIf="comment.replies" #replyEl>
+      <div
+        class="comment comment--reply"
+        *ngFor="let reply of comment.replies; index as replyIndex"
+      >
         <div class="comment__header">
           <img
             class="comment__img"
@@ -61,25 +73,33 @@
         </p>
         <div class="comment__footer">
           <div class="comment__likes">
-            <img src="../../assets/images/icon-plus.svg" alt="" />
+            <img
+              (click)="rate(comment, 'up', replyIndex)"
+              src="../../assets/images/icon-plus.svg"
+              alt=""
+            />
             <p class="">{{ reply.score }}</p>
-            <img src="../../assets/images/icon-minus.svg" alt="" />
+            <img
+              (click)="rate(comment, 'down', replyIndex)"
+              src="../../assets/images/icon-minus.svg"
+              alt=""
+            />
           </div>
           <div
             *ngIf="!isCurrentUser(reply)"
             class="comment__reply-btn on-hover"
           >
             <img src="../../assets/images/icon-reply.svg" alt="" />
-            <p class="">Reply</p>
+            <p (click)="replyComment(replyEl, reply)">Reply</p>
           </div>
           <div *ngIf="isCurrentUser(reply)" class="comment__icons">
             <div class="comment__icon on-hover">
               <img src="../../assets/images/icon-delete.svg" alt="" />
-              <p class="comment__delete">Delete</p>
+              <p (click)="delete()" class="comment__delete">Delete</p>
             </div>
             <div class="comment__icon on-hover">
               <img src="../../assets/images/icon-edit.svg" alt="" />
-              <p class="comment__edit">Edit</p>
+              <p (click)="edit()" class="comment__edit">Edit</p>
             </div>
           </div>
         </div>
@@ -90,19 +110,23 @@
 
 <div class="send-comment">
   <textarea
+    #sendCommentText
     class="send-comment__textarea border"
     placeholder="Add a comment..."
-    name=""
-    id=""
     cols="30"
     rows="5"
   ></textarea>
   <div class="send-comment__footer">
     <img
       class="send-comment__img"
-      [src]="currentUser.image.png"
-      [alt]="currentUser.username"
+      [src]="currentUser?.image?.png"
+      [alt]="currentUser?.username"
     />
-    <button class="send-comment__btn on-hover">SEND</button>
+    <button
+      (click)="send(sendCommentText.value, false)"
+      class="send-comment__btn on-hover"
+    >
+      SEND
+    </button>
   </div>
 </div>
