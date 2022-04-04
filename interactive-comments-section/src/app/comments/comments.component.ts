@@ -1,10 +1,14 @@
 import {
   Component,
   ElementRef,
+  OnDestroy,
   OnInit,
   Renderer2,
   ViewChild,
+  ViewContainerRef,
 } from '@angular/core';
+import { Subscription, take } from 'rxjs';
+import { ModalService } from '../shared/modal/modal.service';
 import { User } from '../shared/models/user.model';
 import { UserService } from '../shared/services/user.service';
 import { Comment } from './comments.model';
@@ -15,27 +19,40 @@ import { CommentsService } from './comments.service';
   templateUrl: './comments.component.html',
   styleUrls: ['./comments.component.scss'],
 })
-export class CommentsComponent implements OnInit {
+export class CommentsComponent implements OnInit, OnDestroy {
   @ViewChild('commentsContainer') commentsContainer!: ElementRef;
-
+  @ViewChild('sendCommentText') sendCommentText!: ElementRef;
+  @ViewChild('commentsRef', { read: ViewContainerRef })
+  commentsView!: ViewContainerRef;
   comments!: Comment[];
   currentUser!: User;
   isReply = false;
   isReplying = false;
+  sub!: Subscription;
+  modalTile: string = 'Delete comment';
+  modalBody: string =
+    'Are you sure you wat to delete this comment? This will remove the comment and can`t be undone.';
 
   constructor(
     private commentsService: CommentsService,
     private userService: UserService,
-    private renderer: Renderer2
+    private renderer: Renderer2,
+    private modalService: ModalService
   ) {}
 
   ngOnInit(): void {
-    this.userService.getUser().subscribe((data: User) => {
-      this.currentUser = data;
-    });
-    this.commentsService.getAllComments().subscribe((data: Comment[]) => {
-      this.comments = data;
-    });
+    this.userService
+      .getUser()
+      .pipe(take(1))
+      .subscribe((data: User) => {
+        this.currentUser = data;
+      });
+    this.commentsService
+      .getAllComments()
+      .pipe(take(1))
+      .subscribe((data: Comment[]) => {
+        this.comments = data;
+      });
   }
 
   isCurrentUser(comment: Comment) {
@@ -72,7 +89,6 @@ export class CommentsComponent implements OnInit {
             '.send-comment__textarea'
           ).value
         );
-        console.log(typeof replyText);
         this.send(replyText, true, comment);
       }
     );
@@ -83,10 +99,7 @@ export class CommentsComponent implements OnInit {
     );
 
     el?.insertAdjacentElement('afterend', replyTextBox);
-    // console.log(this.renderer.nextSibling(el));
-    // let replyTest: Node = this.renderer.nextSibling(el);
     if (!this.isReplying) {
-      console.log('cai aqui');
       let container = this.renderer.parentNode(replyTextBox);
       this.renderer.removeChild(container, replyTextBox);
     }
@@ -97,13 +110,11 @@ export class CommentsComponent implements OnInit {
   }
 
   delete() {
-    let date = new Date();
-    console.log('deletando comentario');
-    console.log(
-      `${date.toLocaleString('en', {
-        month: 'short',
-      })}, ${date.getDate()}, ${date.getFullYear()}`
-    );
+    this.sub = this.modalService
+      .openModal(this.commentsView, this.modalTile, this.modalBody)
+      .subscribe((modalResponse) => {
+        console.log(modalResponse);
+      });
   }
 
   send(
@@ -141,6 +152,7 @@ export class CommentsComponent implements OnInit {
       this.commentsService.postComment(newComment).subscribe(() => {
         this.comments.push(newComment);
       });
+      this.sendCommentText.nativeElement.value = '';
     }
   }
 
@@ -155,5 +167,9 @@ export class CommentsComponent implements OnInit {
       comment.score = eval(comment.score.toString() + mathSymbol + 1);
     }
     this.commentsService.updateComment(comment).subscribe();
+  }
+
+  ngOnDestroy(): void {
+    if (this.sub) this.sub.unsubscribe();
   }
 }

@@ -1,0 +1,31 @@
+.modal {
+  &__container {
+    @apply w-full h-full top-0 left-0 fixed grid place-items-center;
+    background-color: rgba($color: #000000, $alpha: 0.6);
+  }
+
+  &__wrapper {
+    @apply w-80 md:w-96 bg-white rounded-2xl p-8;
+  }
+
+  &__title {
+    @apply text-2xl text-gray-700 font-bold mb-5;
+  }
+
+  &__body {
+    @apply text-gray-500 mb-4;
+  }
+
+  &__btn {
+    &--wrapper {
+      @apply flex justify-between;
+    }
+    @apply w-28 md:w-36 py-2 md:px-4 rounded text-white;
+    &--cancel {
+      @apply bg-gray-500;
+    }
+    &--confirm {
+      @apply bg-red-500;
+    }
+  }
+}

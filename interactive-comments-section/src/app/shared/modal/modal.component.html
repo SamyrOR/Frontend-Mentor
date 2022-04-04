@@ -1,0 +1,22 @@
+<div class="modal__container">
+  <section class="modal__wrapper">
+    <h1 class="modal__title">{{ title }}</h1>
+    <p class="modal__body">{{ body }}</p>
+    <div class="modal__btn--wrapper">
+      <button
+        class="modal__btn modal__btn--cancel"
+        type="button"
+        (click)="closeMe()"
+      >
+        NO, CANCEL
+      </button>
+      <button
+        class="modal__btn modal__btn--confirm"
+        type="button"
+        (click)="closeMe()"
+      >
+        YES, DELETE
+      </button>
+    </div>
+  </section>
+</div>

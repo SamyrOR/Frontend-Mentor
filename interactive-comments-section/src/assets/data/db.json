@@ -63,6 +63,20 @@
           }
         }
       ]
+    },
+    {
+      "id": 1648928521178,
+      "content": "tsetsets",
+      "createdAt": "Apr, 2, 2022",
+      "score": 0,
+      "user": {
+        "image": {
+          "png": "../../assets/images/avatars/image-juliusomo.png",
+          "webp": "../../assets/images/avatars/image-juliusomo.webp"
+        },
+        "username": "juliusomo"
+      },
+      "replies": []
     }
   ]
 }
