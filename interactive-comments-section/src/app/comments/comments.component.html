@@ -37,9 +37,10 @@
             <div
               *ngIf="!isCurrentUser(comment)"
               class="comment__reply-btn on-hover"
+              (click)="replyComment(commentEl, comment)"
             >
               <img src="../../assets/images/icon-reply.svg" alt="" />
-              <p (click)="replyComment(commentEl, comment)">Reply</p>
+              <p>Reply</p>
             </div>
             <div *ngIf="isCurrentUser(comment)" class="comment__icons">
               <div class="comment__icon on-hover">
@@ -56,9 +57,10 @@
           </div>
         </div>
 
-        <div class="comments--reply" *ngIf="comment.replies" #replyEl>
+        <div class="comments--reply" *ngIf="comment.replies">
           <div
             class="comment comment--reply"
+            #replyEl
             *ngFor="let reply of comment.replies; index as replyIndex"
           >
             <div class="comment__header">
@@ -98,9 +100,10 @@
               <div
                 *ngIf="!isCurrentUser(reply)"
                 class="comment__reply-btn on-hover"
+                (click)="replyComment(replyEl, reply)"
               >
                 <img src="../../assets/images/icon-reply.svg" alt="" />
-                <p (click)="replyComment(replyEl, reply)">Reply</p>
+                <p>Reply</p>
               </div>
               <div *ngIf="isCurrentUser(reply)" class="comment__icons">
                 <div class="comment__icon on-hover">

@@ -91,15 +91,19 @@
     &::after {
       content: "";
       position: absolute;
-      top: 0;
+      top: 0px;
       left: -30px;
       width: 3px;
-      height: 100%;
+      height: calc(100% + 20px);
       background-color: rgba(0, 0, 0, 0.1);
     }
     &:last-child::after {
-      top: -20px;
-      height: 107%;
+      // top: -20px;
+      height: 100%;
+    }
+    &:first-child::after {
+      //   top: 1px;
+      height: 110.5%;
     }
   }
 }

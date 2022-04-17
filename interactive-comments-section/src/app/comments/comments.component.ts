@@ -59,12 +59,15 @@ export class CommentsComponent implements OnInit, OnDestroy {
     return comment.user.username === this.currentUser.username;
   }
 
-  replyComment(el?: HTMLElement, comment?: Comment) {
-    this.isReplying = true;
-    let replyTextBox: HTMLElement = this.renderer.createElement('div');
-    this.renderer.addClass(replyTextBox, 'send-comment');
-    this.renderer.addClass(replyTextBox, 'send-comment--reply');
-    replyTextBox.innerHTML = `
+  replyComment(el: HTMLElement, comment: Comment) {
+    if (this.isReplying) {
+      this.removeReplyBox();
+    } else {
+      this.isReplying = true;
+      let replyTextBox: HTMLElement = this.renderer.createElement('div');
+      this.renderer.addClass(replyTextBox, 'send-comment');
+      this.renderer.addClass(replyTextBox, 'send-comment--reply');
+      replyTextBox.innerHTML = `
     <textarea #textToSend
           class="send-comment__textarea border"
           placeholder="Add a comment..."
@@ -80,28 +83,26 @@ export class CommentsComponent implements OnInit, OnDestroy {
           </button>
         </div>
     `;
-    this.renderer.listen(
-      replyTextBox.querySelector('.send-comment__btn'),
-      'click',
-      (event) => {
-        let replyText = <HTMLTextAreaElement>(
-          event.target.parentNode.parentNode.querySelector(
-            '.send-comment__textarea'
-          ).value
-        );
-        this.send(replyText, true, comment);
-      }
-    );
-    this.renderer.setAttribute(
-      replyTextBox.querySelector('.send-comment__img'),
-      'src',
-      this.currentUser.image.png
-    );
+      this.renderer.listen(
+        replyTextBox.querySelector('.send-comment__btn'),
+        'click',
+        (event) => {
+          let replyText = <HTMLTextAreaElement>(
+            event.target.parentNode.parentNode.querySelector(
+              '.send-comment__textarea'
+            ).value
+          );
+          this.send(replyText, true, comment);
+        }
+      );
+      this.renderer.setAttribute(
+        replyTextBox.querySelector('.send-comment__img'),
+        'src',
+        this.currentUser.image.png
+      );
+      // isReplyOfReply = el.classList.contains('comments--reply')
 
-    el?.insertAdjacentElement('afterend', replyTextBox);
-    if (!this.isReplying) {
-      let container = this.renderer.parentNode(replyTextBox);
-      this.renderer.removeChild(container, replyTextBox);
+      el.insertAdjacentElement('afterend', replyTextBox);
     }
   }
 
@@ -109,78 +110,73 @@ export class CommentsComponent implements OnInit, OnDestroy {
     console.log('editando comentario');
   }
 
-  delete(isReply: boolean, commentToDel: Comment) {
+  delete(isReply: boolean, commentToAct: Comment) {
     this.sub = this.modalService
       .openModal(this.commentsView, this.modalTile, this.modalBody)
       .subscribe((modalResponse) => {
         if (modalResponse === 'confirm') {
-          // for (let comment of this.comments) {
-          //   if (!isReply && comment.id === commentToDel.id) {
-          //     console.log('comentario normal');
-          //     this.commentsService.deleteComment(commentToDel.id);
-          //   }
-          //   if (isReply && comment.replies) {
-          //     for (let reply of comment.replies) {
-          //       if (reply.id === commentToDel.id) {
-          //         console.log('comentario replica', commentToDel);
-          //       }
-          //     }
-          //   }
-          // }
           if (!isReply) {
             this.commentsService
-              .deleteComment(commentToDel.id)
+              .deleteComment(commentToAct.id)
               .pipe(take(1))
               .subscribe((response) => {
                 this.comments = this.comments.filter((comment, index) => {
-                  return comment.id !== commentToDel.id;
+                  return comment.id !== commentToAct.id;
                 });
               });
-          }
-          if (isReply) {
-            for (let comment of this.comments) {
-              if (comment.replies) {
-                for (let reply of comment.replies) {
-                  if (reply.id === commentToDel.id) {
-                    let indexOfReply = comment.replies.indexOf(reply);
-                    comment.replies.splice(indexOfReply, 1);
-                    this.commentsService
-                      .updateComment(comment)
-                      .pipe(take(1))
-                      .subscribe();
-                  }
-                }
-              }
-            }
+          } else {
+            this.findReplyComment(commentToAct, this.deleteAct.bind(this));
           }
         }
       });
   }
 
+  deleteAct(comment: Comment, reply: Comment) {
+    let indexOfReply = comment.replies?.indexOf(reply);
+    comment.replies?.splice(indexOfReply!, 1);
+    this.commentsService.updateComment(comment).pipe(take(1)).subscribe();
+  }
+
+  replyAct(comment: Comment, replyCommentObject: Comment) {
+    comment.replies?.push(replyCommentObject);
+    this.commentsService.updateComment(comment).pipe(take(1)).subscribe();
+  }
+
+  removeReplyBox() {
+    let sendCommentEl =
+      this.commentsContainer.nativeElement.querySelector('.send-comment');
+    this.renderer.removeChild(sendCommentEl.parentNode, sendCommentEl);
+    this.isReplying = false;
+  }
+
   send(
     commentText: HTMLTextAreaElement | string,
     isReply: boolean,
-    comment?: Comment
+    commentReply?: Comment
   ) {
     let date = new Date();
     let today = `${date.toLocaleString('en', {
       month: 'short',
     })}, ${date.getDate()}, ${date.getFullYear()}`;
-    if (isReply) {
+    if (isReply && commentReply) {
       let replyCommentObject: Comment = {
         id: Date.now(),
         content: <string>commentText,
         createdAt: today,
         score: 0,
-        replyingTo: comment?.user.username,
+        replyingTo: commentReply.user.username,
         user: this.currentUser,
       };
-      comment?.replies?.push(replyCommentObject);
-      this.commentsService.updateComment(comment!).subscribe();
-      let sendCommentEl =
-        this.commentsContainer.nativeElement.querySelector('.send-comment');
-      sendCommentEl.parentNode.removeChild(sendCommentEl);
-    } else {
+      if (!commentReply.replies) {
+        this.findReplyComment(commentReply, (comment: Comment) => {
+          this.replyAct(comment, replyCommentObject);
+        });
+      } else {
+        this.replyAct(commentReply, replyCommentObject);
+      }
+      this.removeReplyBox();
+    }
+    if (!isReply) {
       let newComment: Comment = {
         id: Date.now(),
         content: <string>commentText,
@@ -207,6 +203,18 @@ export class CommentsComponent implements OnInit, OnDestroy {
       comment.score = eval(comment.score.toString() + mathSymbol + 1);
     }
     this.commentsService.updateComment(comment).subscribe();
+  }
+
+  findReplyComment(commentToAct: Comment, functionToExec: Function) {
+    for (let comment of this.comments) {
+      if (comment.replies) {
+        for (let reply of comment.replies) {
+          if (reply.id === commentToAct.id) {
+            functionToExec(comment, reply);
+          }
+        }
+      }
+    }
   }
 
   ngOnDestroy(): void {
