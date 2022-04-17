@@ -109,11 +109,51 @@ export class CommentsComponent implements OnInit, OnDestroy {
     console.log('editando comentario');
   }
 
-  delete() {
+  delete(isReply: boolean, commentToDel: Comment) {
     this.sub = this.modalService
       .openModal(this.commentsView, this.modalTile, this.modalBody)
       .subscribe((modalResponse) => {
-        console.log(modalResponse);
+        if (modalResponse === 'confirm') {
+          // for (let comment of this.comments) {
+          //   if (!isReply && comment.id === commentToDel.id) {
+          //     console.log('comentario normal');
+          //     this.commentsService.deleteComment(commentToDel.id);
+          //   }
+          //   if (isReply && comment.replies) {
+          //     for (let reply of comment.replies) {
+          //       if (reply.id === commentToDel.id) {
+          //         console.log('comentario replica', commentToDel);
+          //       }
+          //     }
+          //   }
+          // }
+          if (!isReply) {
+            this.commentsService
+              .deleteComment(commentToDel.id)
+              .pipe(take(1))
+              .subscribe((response) => {
+                this.comments = this.comments.filter((comment, index) => {
+                  return comment.id !== commentToDel.id;
+                });
+              });
+          }
+          if (isReply) {
+            for (let comment of this.comments) {
+              if (comment.replies) {
+                for (let reply of comment.replies) {
+                  if (reply.id === commentToDel.id) {
+                    let indexOfReply = comment.replies.indexOf(reply);
+                    comment.replies.splice(indexOfReply, 1);
+                    this.commentsService
+                      .updateComment(comment)
+                      .pipe(take(1))
+                      .subscribe();
+                  }
+                }
+              }
+            }
+          }
+        }
       });
   }
 

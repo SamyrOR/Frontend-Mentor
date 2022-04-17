@@ -45,6 +45,12 @@ export class CommentsService {
       .pipe(catchError(this.handleError));
   }
 
+  deleteComment(id: number) {
+    return this.http
+      .delete<Comment>(this.localUrl + this.commentsUrl + '/' + id)
+      .pipe(catchError(this.handleError));
+  }
+
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
       // A client-side or network error occurred. Handle it accordingly.

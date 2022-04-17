@@ -14,9 +14,7 @@ export class ModalComponent implements OnInit, OnDestroy {
 
   constructor() {}
 
-  ngOnInit(): void {
-    console.log('Modal started');
-  }
+  ngOnInit(): void {}
 
   closeMe() {
     this.closeMeEvent.emit();
@@ -26,7 +24,5 @@ export class ModalComponent implements OnInit, OnDestroy {
     this.confirmEvent.emit();
   }
 
-  ngOnDestroy(): void {
-    console.log('Modal closed');
-  }
+  ngOnDestroy(): void {}
 }

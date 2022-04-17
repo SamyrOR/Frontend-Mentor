@@ -44,7 +44,9 @@
             <div *ngIf="isCurrentUser(comment)" class="comment__icons">
               <div class="comment__icon on-hover">
                 <img src="../../assets/images/icon-delete.svg" alt="" />
-                <p (click)="delete()" class="comment__delete">Delete</p>
+                <p (click)="delete(false, comment)" class="comment__delete">
+                  Delete
+                </p>
               </div>
               <div class="comment__icon on-hover">
                 <img src="../../assets/images/icon-edit.svg" alt="" />
@@ -103,7 +105,9 @@
               <div *ngIf="isCurrentUser(reply)" class="comment__icons">
                 <div class="comment__icon on-hover">
                   <img src="../../assets/images/icon-delete.svg" alt="" />
-                  <p (click)="delete()" class="comment__delete">Delete</p>
+                  <p (click)="delete(true, reply)" class="comment__delete">
+                    Delete
+                  </p>
                 </div>
                 <div class="comment__icon on-hover">
                   <img src="../../assets/images/icon-edit.svg" alt="" />
