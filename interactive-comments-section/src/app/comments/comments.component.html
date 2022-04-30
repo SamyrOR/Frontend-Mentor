@@ -43,15 +43,19 @@
               <p>Reply</p>
             </div>
             <div *ngIf="isCurrentUser(comment)" class="comment__icons">
-              <div class="comment__icon on-hover">
+              <div
+                class="comment__icon on-hover"
+                (click)="delete(false, comment)"
+              >
                 <img src="../../assets/images/icon-delete.svg" alt="" />
-                <p (click)="delete(false, comment)" class="comment__delete">
-                  Delete
-                </p>
+                <p class="comment__delete">Delete</p>
               </div>
-              <div class="comment__icon on-hover">
+              <div
+                class="comment__icon on-hover"
+                (click)="edit(commentEl, comment, false)"
+              >
                 <img src="../../assets/images/icon-edit.svg" alt="" />
-                <p (click)="edit()" class="comment__edit">Edit</p>
+                <p class="comment__edit">Edit</p>
               </div>
             </div>
           </div>
@@ -106,15 +110,19 @@
                 <p>Reply</p>
               </div>
               <div *ngIf="isCurrentUser(reply)" class="comment__icons">
-                <div class="comment__icon on-hover">
+                <div
+                  class="comment__icon on-hover"
+                  (click)="delete(true, reply)"
+                >
                   <img src="../../assets/images/icon-delete.svg" alt="" />
-                  <p (click)="delete(true, reply)" class="comment__delete">
-                    Delete
-                  </p>
+                  <p class="comment__delete">Delete</p>
                 </div>
-                <div class="comment__icon on-hover">
+                <div
+                  class="comment__icon on-hover"
+                  (click)="edit(replyEl, reply, true)"
+                >
                   <img src="../../assets/images/icon-edit.svg" alt="" />
-                  <p (click)="edit()" class="comment__edit">Edit</p>
+                  <p class="comment__edit">Edit</p>
                 </div>
               </div>
             </div>

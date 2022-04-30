@@ -64,25 +64,7 @@ export class CommentsComponent implements OnInit, OnDestroy {
       this.removeReplyBox();
     } else {
       this.isReplying = true;
-      let replyTextBox: HTMLElement = this.renderer.createElement('div');
-      this.renderer.addClass(replyTextBox, 'send-comment');
-      this.renderer.addClass(replyTextBox, 'send-comment--reply');
-      replyTextBox.innerHTML = `
-    <textarea #textToSend
-          class="send-comment__textarea border"
-          placeholder="Add a comment..."
-          cols="30"
-          rows="5"
-        ></textarea>
-        <div class="send-comment__footer">
-          <img
-            class="send-comment__img"
-          />
-          <button class="send-comment__btn on-hover">
-            SEND
-          </button>
-        </div>
-    `;
+      let replyTextBox: HTMLElement = this.createTextBox('REPLY');
       this.renderer.listen(
         replyTextBox.querySelector('.send-comment__btn'),
         'click',
@@ -95,19 +77,36 @@ export class CommentsComponent implements OnInit, OnDestroy {
           this.send(replyText, true, comment);
         }
       );
-      this.renderer.setAttribute(
-        replyTextBox.querySelector('.send-comment__img'),
-        'src',
-        this.currentUser.image.png
-      );
-      // isReplyOfReply = el.classList.contains('comments--reply')
-
+      this.setPhotoAtElement(replyTextBox);
       el.insertAdjacentElement('afterend', replyTextBox);
     }
   }
 
-  edit() {
-    console.log('editando comentario');
+  edit(commentEl: HTMLElement, comment: Comment, isReply: boolean) {
+    let text: string = comment.content;
+    let textBox: HTMLElement = this.createTextBox('UPDATE');
+    this.renderer.selectRootElement(textBox.firstElementChild, true).value =
+      text;
+    this.setPhotoAtElement(textBox);
+    commentEl.insertAdjacentElement('afterend', textBox);
+    this.renderer.setStyle(commentEl, 'display', 'none');
+    this.renderer.listen(
+      textBox.querySelector('.send-comment__btn'),
+      'click',
+      (event) => {
+        let newText = event.target.parentNode.parentNode.querySelector(
+          '.send-comment__textarea'
+        ).value;
+        if (isReply) {
+          this.findReplyComment(comment, this.editAct.bind(this), newText);
+        } else {
+          comment.content = newText;
+          this.commentsService.updateComment(comment).pipe(take(1)).subscribe();
+        }
+        this.renderer.setStyle(commentEl, 'display', 'block');
+        this.renderer.removeChild(textBox.parentElement, textBox);
+      }
+    );
   }
 
   delete(isReply: boolean, commentToAct: Comment) {
@@ -129,6 +128,14 @@ export class CommentsComponent implements OnInit, OnDestroy {
           }
         }
       });
+  }
+
+  editAct(comment: Comment, reply: Comment, newText: string) {
+    if (comment.replies) {
+      let indexOfReply = comment.replies?.indexOf(reply);
+      comment.replies[indexOfReply].content = newText;
+    }
+    this.commentsService.updateComment(comment).pipe(take(1)).subscribe();
   }
 
   deleteAct(comment: Comment, reply: Comment) {
@@ -205,16 +212,52 @@ export class CommentsComponent implements OnInit, OnDestroy {
     this.commentsService.updateComment(comment).subscribe();
   }
 
-  findReplyComment(commentToAct: Comment, functionToExec: Function) {
+  findReplyComment(
+    commentToAct: Comment,
+    functionToExec: Function,
+    text?: string
+  ) {
     for (let comment of this.comments) {
       if (comment.replies) {
         for (let reply of comment.replies) {
           if (reply.id === commentToAct.id) {
-            functionToExec(comment, reply);
+            functionToExec(comment, reply, text);
           }
         }
       }
     }
+  }
+
+  createTextBox(btnText: string): HTMLElement {
+    let textBox = this.renderer.createElement('div');
+    this.renderer.addClass(textBox, 'send-comment');
+    this.renderer.addClass(textBox, 'send-comment--reply');
+    textBox.innerHTML = `
+    <textarea #textToSend
+          class="send-comment__textarea border"
+          placeholder="Add a comment..."
+          cols="30"
+          rows="5"
+        >
+    </textarea>
+    <div class="send-comment__footer">
+      <img
+        class="send-comment__img"
+      />
+      <button class="send-comment__btn on-hover">
+        ${btnText}
+      </button>
+    </div>
+    `;
+    return textBox;
+  }
+
+  setPhotoAtElement(textBox: HTMLElement) {
+    this.renderer.setAttribute(
+      textBox.querySelector('.send-comment__img'),
+      'src',
+      this.currentUser.image.png
+    );
   }
 
   ngOnDestroy(): void {
